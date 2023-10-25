@@ -5,6 +5,7 @@ import {
     ScrollView,
     StatusBar,
     StyleSheet,
+    Button,
 } from "react-native";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
