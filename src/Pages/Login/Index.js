@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
@@ -16,10 +16,17 @@ const Login = () => {
                 email: User,
                 password: Pass
             }
-        }).then((response)=> {     
-            console.log(response.data)
-            AsyncStorage.setItem("Token", response.data.data)
+        }).then((response)=> {    
+           SetToken(response.data.data)
         }).catch((err) => console.log(err))
+    }
+
+    const SetToken = async (Token) => {
+        try{
+            await AsyncStorage.setItem('Token', Token)
+        } catch{
+            Alert.alert("Erro ao Fazer o Login", "Tente novamente!")
+        }
     }
 
     return (
