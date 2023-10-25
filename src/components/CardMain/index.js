@@ -11,13 +11,12 @@ const CardMain = ({item}) => {
         }).catch((err) => console.log(err))
     }, [])
 
-    console.log(item.contatos.number)
     return (
         <View style={styles.container}>
             <ScrollView style={styles.scroll} horizontal={true}>
                 <View style={styles.itens}>
                     {req.map((product, index)=> (
-                        <View key={product.idEmpresa} style={styles.containerProduct}>
+                        <View key={index} style={styles.containerProduct}>
                             <View style={styles.cardProduct}>
                                 <Image
                                 style={styles.cardProduct}
