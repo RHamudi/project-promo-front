@@ -1,13 +1,17 @@
 import { NavigationContainer } from '@react-navigation/native';
 import MyStack from './src/Pages';
+import { Provider } from 'react-redux';
+import store from './src/Redux/store';
 
 
 export default function App() {
 
   return (
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <MyStack />
+      </NavigationContainer>
+    </Provider>
   );
 }
 
