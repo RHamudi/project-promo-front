@@ -10,6 +10,7 @@ export const slice = createSlice({
     initialState: InitialState,
     reducers: {
         signin(state, {payload}){
+            AsyncStorage.setItem('Token', payload.data)
             return{...state, AuthenticatedIs: true, Token: payload.data}
         }
     }
