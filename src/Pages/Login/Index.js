@@ -3,10 +3,15 @@ import { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { signin, useStateLogin } from '../../Redux/LoginSlice';
 
 const Login = () => {
     const [User, SetUser] = useState();
     const [Pass, SetPass] = useState();
+    const Dispach = useDispatch();
+    const {Token} = useSelector(useStateLogin)
+    const {AuthenticatedIs} = useSelector(useStateLogin)
 
     function Authentication(){
         axios({
@@ -16,21 +21,14 @@ const Login = () => {
                 email: User,
                 password: Pass
             }
-        }).then((response)=> {    
-           SetToken(response.data.data)
+        }).then((response)=> {
+           Dispach(signin(response.data))
         }).catch((err) => console.log(err))
-    }
-
-    const SetToken = async (Token) => {
-        try{
-            await AsyncStorage.setItem('Token', Token)
-        } catch{
-            Alert.alert("Erro ao Fazer o Login", "Tente novamente!")
-        }
     }
 
     return (
         <View style={styles.container}>
+            <Text>{AuthenticatedIs ? "sexo" : "erro"}</Text>
             <Text>Usuario</Text>
             <TextInput
                 style={styles.input}
