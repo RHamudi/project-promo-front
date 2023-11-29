@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { signin, useStateLogin } from '../../Redux/LoginSlice';
+import { axiosApi } from '../../Services/http-client';
 
 const Login = () => {
     const [User, SetUser] = useState();
@@ -14,9 +15,9 @@ const Login = () => {
     const {AuthenticatedIs} = useSelector(useStateLogin)
 
     function Authentication(){
-        axios({
+        axiosApi({
             method: 'post',
-            url: "http://192.168.1.64:5293/api/business/Authentication",
+            url: "user/Authentication",
             data: {
                 email: User,
                 password: Pass
