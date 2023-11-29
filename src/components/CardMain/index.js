@@ -6,7 +6,7 @@ const CardMain = ({item}) => {
     const [req, setReq] = useState([]);
 
     useEffect(()=> {
-        axiosApi.get(`http://192.168.1.64:5293/api/product/getbyid?idEmpresa=${item.idEmpresa}`).then((response)=> {     
+        axiosApi.get(`product/getbyid?idEmpresa=${item.idEmpresa}`).then((response)=> {     
             setReq(response.data.data)
         }).catch((err) => console.log(err))
     }, [])
