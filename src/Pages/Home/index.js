@@ -8,7 +8,7 @@ export default function Home({navigation}) {
   const [req, setReq] = useState([]);
 
   useEffect(()=> {
-      axiosApi.get('http://192.168.1.64:5293/api/business/getall').then((response)=> {     
+      axiosApi.get('business/getall').then((response)=> {     
           setReq(response.data.data)
       }).catch((err) => console.log(err))
   }, [])
