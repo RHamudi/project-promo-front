@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const InitialState = {
     AuthenticatedIs: false,
@@ -10,7 +11,12 @@ export const slice = createSlice({
     initialState: InitialState,
     reducers: {
         signin(state, {payload}){
-            AsyncStorage.setItem('Token', payload.data)
+            
+            try {
+                AsyncStorage.setItem('Token', payload.data);
+            } catch (error) {
+                console.log("erro em salvar o token")
+            }
             return{...state, AuthenticatedIs: true, Token: payload.data}
         }
     }
