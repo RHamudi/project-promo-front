@@ -9,14 +9,14 @@ export default function Business({route}){
     const {item} = route.params;
     
     useEffect(()=> {
-        axiosApi.get(`http://192.168.1.64:5293/api/product/getbyid?idEmpresa=${item.idEmpresa}`).then((response)=> {     
+        axiosApi.get(`product/getbyid?idEmpresa=${item.idEmpresa}`).then((response)=> {     
             setReq(response.data.data)
         }).catch((err) => console.log(err))
     }, [])
-
+ 
     return(
-        <>
-        <View style={styles.container}>
+        <> 
+                <View style={styles.container}>
             <Image 
                 style={styles.logo}
                 src={item.logoImagem}
@@ -83,6 +83,7 @@ export default function Business({route}){
             </MapView>
         </View>
         </View>
+
         </>
     )
 }
