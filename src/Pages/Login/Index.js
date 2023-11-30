@@ -1,8 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { signin, useStateLogin } from '../../Redux/LoginSlice';
 import { axiosApi } from '../../Services/http-client';
