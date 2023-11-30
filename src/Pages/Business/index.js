@@ -7,7 +7,11 @@ import MapView, { Marker } from "react-native-maps";
 export default function Business({route}){
     const [req, setReq] = useState([]);
     const {item} = route.params;
-    
+    let LatLong = item.geoLocalizacao.split(",");
+
+    let lat = Number(LatLong[0]);
+    let long = Number(LatLong[1]);
+
     useEffect(()=> {
         axiosApi.get(`product/getbyid?idEmpresa=${item.idEmpresa}`).then((response)=> {     
             setReq(response.data.data)
@@ -16,7 +20,7 @@ export default function Business({route}){
  
     return(
         <> 
-                <View style={styles.container}>
+        <View style={styles.container}>
             <Image 
                 style={styles.logo}
                 src={item.logoImagem}
@@ -67,8 +71,8 @@ export default function Business({route}){
             <View style={styles.mapcontainer}>
             <MapView
             initialRegion={{
-                latitude: -12.656993484951188,
-                longitude: -38.53441112418043,
+                latitude: lat,
+                longitude: long,
                 latitudeDelta: 0.005,
                 longitudeDelta: 0.005
             }}
@@ -76,8 +80,8 @@ export default function Business({route}){
             >
                 <Marker 
                     coordinate={{
-                        latitude: -12.656993484951188,
-                        longitude: -38.53441112418043,
+                        latitude: lat,
+                        longitude: long,
                     }}
                 />
             </MapView>
