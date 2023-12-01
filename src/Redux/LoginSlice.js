@@ -3,7 +3,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const InitialState = {
     AuthenticatedIs: false,
-    Token: ""
+    Token: "",
+    User: {}
 }
 
 export const slice = createSlice({
@@ -11,13 +12,12 @@ export const slice = createSlice({
     initialState: InitialState,
     reducers: {
         signin(state, {payload}){
-            
             try {
-                AsyncStorage.setItem('Token', payload.data);
+                AsyncStorage.setItem('Token', payload.data.authentication);
             } catch (error) {
                 console.log("erro em salvar o token")
             }
-            return{...state, AuthenticatedIs: true, Token: payload.data}
+            return{...state, AuthenticatedIs: true, Token: payload.data.authentication, User: payload.data.user}
         }
     }
 })
