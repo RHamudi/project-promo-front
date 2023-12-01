@@ -1,14 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./screens/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./App.{js,jsx,ts,tsx}", 
+            "./src/components/**/*.{js,jsx,ts,tsx}",
+            "./src/Pages/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
   },
-  plugins: [["nativewind/babel", { mode: "transformOnly" }]],
+  plugins: [],
 }
 
