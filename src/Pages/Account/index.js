@@ -1,9 +1,18 @@
-import { Text, View } from "react-native";
+import { Button, Text, View } from "react-native";
+import { useSelector } from 'react-redux';
+import { useStateLogin } from '../../Redux/LoginSlice';
 
-export default function Account(){
+export default function Account({navigation}){
+    const {Token} = useSelector(useStateLogin)
+    const {User} = useSelector(useStateLogin)
+
     return (
         <View>
-            <Text>Conta Usuario</Text>
+            <Text>Usuario: {User.nome}</Text>
+            <Button 
+            title="Criar Empresa"
+            onPress={()=> navigation.navigate("AddBusiness")}
+            />
         </View>
     )
 }
