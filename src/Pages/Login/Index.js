@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, Alert, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { signin, useStateLogin } from '../../Redux/LoginSlice';
 import { axiosApi } from '../../Services/http-client';
 
-const Login = () => {
+const Login = ({navigation}) => {
     const [User, SetUser] = useState();
     const [Pass, SetPass] = useState();
     const Dispach = useDispatch();
@@ -25,9 +25,12 @@ const Login = () => {
         }).catch((err) => console.log(err))
     }
 
+    function onPress(){
+        navigation.navigate("AddUser")
+    }
+
     return (
         <View style={styles.container}>
-            <Text>{AuthenticatedIs ? "sexo" : "erro"}</Text>
             <Text>Usuario</Text>
             <TextInput
                 style={styles.input}
@@ -44,6 +47,10 @@ const Login = () => {
                 title='Submit'
                 onPress={Authentication}
             />
+            <Text>Não possui uma conta? </Text>
+            <TouchableOpacity style={styles.button} onPress={onPress}>
+                <Text>Clique aqui!</Text>
+            </TouchableOpacity>
         </View>
     );
 }
