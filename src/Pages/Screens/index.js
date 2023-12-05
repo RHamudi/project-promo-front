@@ -1,14 +1,13 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../Home';
 import Business from '../Business';
-import Login from '../Login/Index';
+import Login from '../Login';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
 import { useStateLogin } from '../../Redux/LoginSlice';
 import Account from '../Account';
-import CreateBusiness from '../CreateBusiness';
-import CreBusi from '../CreateBusiness';
 import AddBusiness from '../CreateBusiness';
+import CreateUser from '../CreateUser';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,6 +35,7 @@ export default function MyStack() {
       <CompanyStack.Screen name="Principal" component={CompanyStackScreen} options={{ headerShown: false }}/>
       <CompanyStack.Screen name="Business" component={Business}/>
       <CompanyStack.Screen name="AddBusiness" component={AddBusiness} />
+      <CompanyStack.Screen name="AddUser" component={CreateUser} />
     </CompanyStack.Navigator>
   );
 }
