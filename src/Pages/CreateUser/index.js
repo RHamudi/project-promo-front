@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Button, Text, TextInput, View } from "react-native";
 import { axiosApi } from "../../Services/http-client";
 
-export default function CreateUser(){
+export default function CreateUser({navigation}){
     const [Name, setName] = useState()
     const [Email, setEmail] = useState()
     const [Password, setPassword] = useState()
 
-    function CreateUser({navigation}){
+    function CreateUser(){
         axiosApi({
             method: 'POST',
             url: "user/insert",
@@ -17,7 +17,11 @@ export default function CreateUser(){
                 Password: Password,
                 IdBusiness: ""
             }
-        }).then(()=> navigation.navigate("Login"))
+        }).then((res)=> {
+            console.log(res.data)
+            navigation.navigate("Login")
+        }
+        )
         .catch((err)=> console.log(err))
     }
 
