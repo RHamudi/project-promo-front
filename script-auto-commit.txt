@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Comando 1
+echo "Executando Comando 1"
+ls
+
+# Comando 2
+echo "Executando Comando 2"
+ls
+
+# Comando 3
+echo "Executando Comando 3"
+ls
