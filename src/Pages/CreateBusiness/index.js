@@ -52,7 +52,7 @@ export default function AddBusiness(){
     formData.append("Location", "proximo dali ali aq")
 
     const categories = ["Food", "Fashion", "Technology"]
-    const CategsPort = ["Alimentação", "Moda", "Tecnologia"]
+    
 
     const handleMapPress = (event) => {
         const {coordinate} = event.nativeEvent;
