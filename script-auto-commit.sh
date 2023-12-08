@@ -12,17 +12,4 @@ echo "y" | auto-commit
 
 git push
 
-# Loop infinito
-while true; do
-    # Exibe uma mensagem
-    echo "Pressione a tecla Esc para sair."
-
-    # Lê a entrada do teclado
-    read -rsn1 key
-
-    # Verifica se a tecla pressionada é Esc
-    if [ "$key" == $'\e' ]; then
-        echo "Tecla Esc pressionada. Saindo."
-        break
-    fi
 done
