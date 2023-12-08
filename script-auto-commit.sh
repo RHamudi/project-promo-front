@@ -9,10 +9,11 @@ echo "Executando Comando 2"
 cd /c/Github/$pasta
 
 # Comando 3
-echo "Executando Comando 3"
-auto-commit -q
-
+echo "Executando linhas de comando"
 git add .
+
+auto-commit
+
 git push
 
 # Loop infinito
