@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Button, Alert, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { signin, useStateLogin } from '../../Redux/LoginSlice';
 import { axiosApi } from '../../Services/http-client';
@@ -9,8 +9,8 @@ const Login = ({navigation}) => {
     const [User, SetUser] = useState();
     const [Pass, SetPass] = useState();
     const Dispach = useDispatch();
-    const {Token} = useSelector(useStateLogin)
-    const {AuthenticatedIs} = useSelector(useStateLogin)
+    // const {Token} = useSelector(useStateLogin)
+   // const {AuthenticatedIs} = useSelector(useStateLogin)
 
     function Authentication(){
         axiosApi({
