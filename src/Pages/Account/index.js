@@ -10,7 +10,7 @@ export default function Account({navigation}){
         <View>
             <Text>Usuario: {User.nome}</Text>
             <Button 
-            title="Criar Empresa testando auto commit"
+            title="Criar Empresa"
             onPress={()=> navigation.navigate("AddBusiness")}
             />
         </View>
