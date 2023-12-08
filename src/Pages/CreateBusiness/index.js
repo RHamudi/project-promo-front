@@ -22,19 +22,6 @@ export default function AddBusiness(){
     const {User} = useSelector(useStateLogin);
     const formData = new FormData();
 
-    const dataRequest = {
-        IdUser: User.idUsuario,
-        Name: Name,
-        Description: Description,
-        Logo: Logo,
-        Location: Location,
-        Email: Email,
-        Number: Number,
-        Site: Site,
-        Category: Category,
-        Operation: Operation,
-        GeoData: GeoData 
-    }
     formData.append("IdUser", User.idUsuario)
     formData.append("Name", "Testando arouba")
     formData.append('Description', "Essa é uma descricao foda")
