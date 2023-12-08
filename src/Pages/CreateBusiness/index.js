@@ -53,8 +53,6 @@ export default function AddBusiness(){
             includeBase64: false,
             base64: true,
             quality: 1,
-
-            
         })
 
         if(!result.canceled){
@@ -98,7 +96,9 @@ export default function AddBusiness(){
 
             
             <Text>Logo</Text>
-            <Button title="Selecione uma Imagem" onPress={pickImage}/>
+            <Button title="Selecione uma Imagem" 
+            onPress={pickImage}
+            />
 
             <Text>Location</Text>
             <TextInput 
