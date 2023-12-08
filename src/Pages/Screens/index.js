@@ -8,6 +8,7 @@ import Account from '../Account';
 import AddBusiness from '../CreateBusiness';
 import CreateUser from '../CreateUser';
 import Login from '../Login'
+import CreateProduct from '../CreateProduct';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,6 +37,7 @@ export default function MyStack() {
       <CompanyStack.Screen name="Business" component={Business}/>
       <CompanyStack.Screen name="AddBusiness" component={AddBusiness} />
       <CompanyStack.Screen name="AddUser" component={CreateUser} />
+      <CompanyStack.Screen name="AddProduct" component={CreateProduct} />
     </CompanyStack.Navigator>
   );
 }

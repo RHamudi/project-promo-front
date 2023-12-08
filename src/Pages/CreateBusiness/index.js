@@ -52,7 +52,7 @@ export default function AddBusiness(){
     formData.append("Location", "proximo dali ali aq")
 
     const categories = ["Food", "Fashion", "Technology"]
-    tas
+    
 
     const handleMapPress = (event) => {
         const {coordinate} = event.nativeEvent;

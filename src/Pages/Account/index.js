@@ -13,6 +13,10 @@ export default function Account({navigation}){
             title="Criar Empresa"
             onPress={()=> navigation.navigate("AddBusiness")}
             />
+            <Button
+            title="Criar produtos"
+            onPress={()=> navigation.navigate("AddProduct")}
+            />
         </View>
     )
 }
