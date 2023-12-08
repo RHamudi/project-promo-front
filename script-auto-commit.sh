@@ -1,12 +1,8 @@
 #!/bin/bash
 
-# Comando 1
-echo "digite o diretorio"
-read pasta
-
 # Comando 2
 echo "Executando Comando 2"
-cd /c/Github/$pasta
+cd /c/Github/$PWD
 
 # Comando 3
 echo "Executando linhas de comando"
