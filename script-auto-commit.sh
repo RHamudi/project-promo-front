@@ -8,7 +8,7 @@ cd /c/Github/$PWD
 echo "Executando linhas de comando"
 git add .
 
-auto-commit
+echo "y" | auto-commit
 
 git push
 
