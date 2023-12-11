@@ -5,7 +5,7 @@ import MapView, { Marker } from "react-native-maps";
 
 
 export default function Business({route}){
-    const [req, setReq] = useState([]);
+    const [req, setReq] = useState();
     const {item} = route.params;
     let LatLong = item.geoLocalizacao.split(",");
 
@@ -15,9 +15,12 @@ export default function Business({route}){
     useEffect(()=> {
         axiosApi.get(`product/getbyid?idEmpresa=${item.idEmpresa}`).then((response)=> {     
             setReq(response.data.data)
+            
         }).catch((err) => console.log(err))
     }, [])
  
+    if(req) req.map(img => console.log(img))
+    
     return(
         <> 
         <View style={styles.container}>
@@ -37,30 +40,16 @@ export default function Business({route}){
         </View>
         <View>
             <ScrollView style={styles.scroll} horizontal={true}>
-                            <Image
-                                style={styles.cardProduct}
-                                src={req.length != 0 ? req[0].imagens : ''}
-                            />
-                            <Image
-                                style={styles.cardProduct}
-                                src={req.length != 0 ? req[0].imagens : ''}
-                            />
-                            <Image
-                                style={styles.cardProduct}
-                                src={req.length != 0 ? req[0].imagens : ''}
-                            />
-                            <Image
-                                style={styles.cardProduct}
-                                src={req.length != 0 ? req[0].imagens : ''}
-                            />
-                            <Image
-                                style={styles.cardProduct}
-                                src={req.length != 0 ? req[0].imagens : ''}
-                            />
-                            <Image
-                                style={styles.cardProduct}
-                                src={req.length != 0 ? req[0].imagens : ''}
-                            />
+                <View>
+                       {req && req.map(img => 
+                       <Image
+                       style={styles.cardProduct}
+                       src={img.imagens}
+                       />
+                       )}
+                       
+                </View>
+                            
             </ScrollView>
             <View>
                 <Text>Contatos</Text>

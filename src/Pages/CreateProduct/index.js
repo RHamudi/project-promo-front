@@ -50,8 +50,6 @@ export default function CreateProduct(){
         }).then((res)=> console.log(res)).catch((err)=> console.log(err))
     }
 
-    console.log(formData)
-
     return (
         <View >
             <Text>Digite o nome do produto</Text>
