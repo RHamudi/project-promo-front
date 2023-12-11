@@ -40,16 +40,12 @@ export default function Business({route}){
         </View>
         <View>
             <ScrollView style={styles.scroll} horizontal={true}>
-                
-                       {req && req.map(img => 
-                       <Image
-                       style={styles.cardProduct}
-                       src={img.imagens}
-                       />
-                       )}
-                       
-                
-                            
+                {req && req.map(img => 
+                <Image
+                style={styles.cardProduct}
+                src={img.imagens}
+                />
+                )}
             </ScrollView>
             <View>
                 <Text>Contatos</Text>
