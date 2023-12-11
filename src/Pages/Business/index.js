@@ -40,8 +40,9 @@ export default function Business({route}){
         </View>
         <View>
             <ScrollView style={styles.scroll} horizontal={true}>
-                {req && req.map(img => 
+                {req && req.map((img,index) => 
                 <Image
+                key={index}
                 style={styles.cardProduct}
                 src={img.imagens}
                 />
