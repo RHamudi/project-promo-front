@@ -122,7 +122,7 @@ export default function CreateProduct(){
                     )}
                 name="Price"
             />
-
+            {errors.Price && <Text>{errors.Price.message}</Text>}
             <Button 
             title="Submit"
             onPress={AddProduct}
