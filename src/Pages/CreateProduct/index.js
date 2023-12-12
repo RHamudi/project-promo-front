@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useStateLogin } from "../../Redux/LoginSlice";
 import * as ImagePicker from 'expo-image-picker';
 import { axiosApi } from "../../Services/http-client";
+import {useForm, Controller} from 'react-hook-form';
 
 export default function CreateProduct(){
     const {User} = useSelector(useStateLogin);
@@ -36,8 +37,6 @@ export default function CreateProduct(){
             setImages(result.assets[0])
         }
     }
-
-   
 
     function AddProduct(){
         axiosApi({
