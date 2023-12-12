@@ -101,18 +101,42 @@ export default function AddBusiness(){
                 pagina para criar empresa
             </Text>
 
-            <Text>Nome</Text>
-            <TextInput 
-            placeholder="Digite seu nome"
-            onChangeText={setName}
-        
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Digite o nome da empresa"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Name"
             />
+            {errors.Name && <Text>{errors.Name.message}</Text>}
 
             <Text>Description</Text>
-            <TextInput 
-            placeholder="Digite sua descrição"
-            onChangeText={setDescription}
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Digite a descrição da empresa"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Description"
             />
+            {errors.Description && <Text>{errors.Description.message}</Text>}
 
             
             <Text>Logo</Text>
@@ -121,28 +145,80 @@ export default function AddBusiness(){
             />
 
             <Text>Location</Text>
-            <TextInput 
-            placeholder="Digite seu nome"
-            onChangeText={setLocation}
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Digite um ponto de referencia"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Location"
             />
+            {errors.Location && <Text>{errors.Location.message}</Text>}
 
             <Text>Email</Text>
-            <TextInput 
-            placeholder="Digite seu nome"
-            onChangeText={setEmail}
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Digite o email da sua empresa"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Email"
             />
+            {errors.Email && <Text>{errors.Email.message}</Text>}
 
             <Text>Number</Text>
-            <TextInput 
-            placeholder="Digite seu nome"
-            onChangeText={setNumber}
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Digite o numero da sua empresa"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Number"
             />
+            {errors.Number && <Text>{errors.Number.message}</Text>}
 
             <Text>Instagram</Text>
-            <TextInput 
-            placeholder="Digite seu nome"
-            onChangeText={setSite}
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Cole aqui o link do seu instagram ou Site"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Site"
             />
+            {errors.Site && <Text>{errors.Site.message}</Text>}
 
             <Text>Category</Text>
             <SelectDropdown 
@@ -159,10 +235,23 @@ export default function AddBusiness(){
             />
 
             <Text>Operation</Text>
-            <TextInput 
-            placeholder="Digite seu nome"
-            onChangeText={setOperation}
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Digite o orario de operação da sua empresa"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Operation"
             />
+            {errors.Operation && <Text>{errors.Operation.message}</Text>}
 
             <Text>GeoData</Text>
             <MapView
@@ -180,8 +269,8 @@ export default function AddBusiness(){
                 {CoordMark && <Marker coordinate={CoordMark} />}
             </MapView>
             <Button 
-            title="Submit"
-            onPress={AddBusiness}
+                title="Submit"
+                onPress={handleSubmit(onSubmit)}
             />
         </View>
     )
