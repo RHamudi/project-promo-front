@@ -125,7 +125,7 @@ export default function CreateProduct(){
             {errors.Price && <Text>{errors.Price.message}</Text>}
             <Button 
             title="Submit"
-            onPress={AddProduct}
+            onPress={handleSubmit(onSubmit)}
             />
         </View>
     )
