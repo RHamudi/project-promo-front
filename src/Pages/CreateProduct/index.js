@@ -23,7 +23,7 @@ export default function CreateProduct(){
         defaultValues: {
             Name: "",
             Description: "",
-            Price: 0    
+            Price: ""    
         }
     })
     const onSubmit = (data) => console.log(data)

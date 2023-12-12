@@ -35,7 +35,7 @@ export default function AddBusiness(){
             Email: "",
             Number: "",
             Site: "",
-            Category: 0,
+            Category: "",
             Operation: "",
             Location: ""
         }
