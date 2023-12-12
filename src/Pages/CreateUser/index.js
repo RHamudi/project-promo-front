@@ -21,6 +21,8 @@ export default function CreateUser({navigation}){
         }
     })
 
+    const onSubmit = (data) => console.log(data)
+
     function CreateUser(){
         axiosApi({
             method: 'POST',
@@ -100,8 +102,8 @@ export default function CreateUser({navigation}){
             {errors.Senha && <Text>{errors.Senha.message}</Text>}
 
             <Button
-            title="Criar"
-            onPress={CreateUser}
+                title="Criar"
+                onPress={handleSubmit(onSubmit)}
             />
         </View>
     )
