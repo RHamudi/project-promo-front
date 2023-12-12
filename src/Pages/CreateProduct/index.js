@@ -15,6 +15,19 @@ export default function CreateProduct(){
     const [Price, setPrice] = useState();
     const formData = new FormData();
 
+    const {
+        control,
+        handleSubmit,
+        formState: {errors},
+    } = useForm({
+        defaultValues: {
+            Name: "",
+            Description: "",
+            Price: 0    
+        }
+    })
+    const onSubmit = (data) => console.log(data)
+
     formData.append("IdBusiness", IdBusiness)
     formData.append("Name", Name)
     formData.append("Description", Description)
@@ -52,24 +65,62 @@ export default function CreateProduct(){
     return (
         <View >
             <Text>Digite o nome do produto</Text>
-            <TextInput 
-            placeholder="Name"
-            onChangeText={setName}
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Digite o nome do produto"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Name"
             />
+            {errors.Name && <Text>{errors.Name.message}</Text>}
             <Text>Digite a descrição do produto</Text>
-            <TextInput 
-            placeholder="Description"
-            onChangeText={setDescription}
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Digite a descrição do produto"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Description"
             />
+            {errors.Description && <Text>{errors.Description.message}</Text>}
             <Text>Selecione sua imagem</Text>
             <Button 
-            title="Selecione a imagem"
-            onPress={pickImage}
+                title="Selecione a imagem"
+                onPress={pickImage}
             />
             <Text>Digite o preço</Text>
-            <TextInput 
-            placeholder="Price"
-            onChangeText={setPrice}
+            <Controller 
+                control={control}
+                rules={{
+                    required: true
+                }}
+                render={({
+                    field: {onChange, onBlur, value}}) => (
+                        <TextInput 
+                            placeholder="Digite o preco do produto"
+                            onBlur={onBlur}
+                            onChangeText={onChange}
+                            value={value}
+                        />
+                    )}
+                name="Price"
             />
 
             <Button 
