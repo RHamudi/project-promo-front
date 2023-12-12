@@ -10,12 +10,12 @@ export default function Account({navigation}){
         <View>
             <Text>Usuario: {User.nome}</Text>
             <Button 
-            title="Criar Empresa"
-            onPress={()=> navigation.navigate("AddBusiness")}
+                title="Criar Empresa"
+                onPress={()=> navigation.navigate("AddBusiness")}
             />
             <Button
-            title="Criar produtos"
-            onPress={()=> navigation.navigate("AddProduct")}
+                title="Criar produtos"
+                onPress={()=> navigation.navigate("AddProduct")}
             />
         </View>
     )
