@@ -6,6 +6,7 @@ import SelectDropdown from "react-native-select-dropdown";
 import { useSelector } from "react-redux";
 import { useStateLogin } from "../../Redux/LoginSlice";
 import { axiosApi } from "../../Services/http-client";
+import {useForm, Controller} from 'react-hook-form';
 
 export default function AddBusiness(){
     const [Name, setName] = useState();
@@ -21,6 +22,26 @@ export default function AddBusiness(){
     const [CoordMark, setCoordMark] = useState();
     const {User} = useSelector(useStateLogin);
     const formData = new FormData();
+
+    const {
+        control,
+        handleSubmit,
+        formState: {errors}
+    } = useForm({
+        defaultValues: {
+            IdUser: User.idUsuario,
+            Name: "",
+            Description: "",
+            Email: "",
+            Number: "",
+            Site: "",
+            Category: 0,
+            Operation: "",
+            Location: ""
+        }
+    })
+    
+    const onSubmit = (data) => console.log(data)
 
     formData.append("IdUser", User.idUsuario)
     formData.append("Name", "Testando arouba")
@@ -40,7 +61,6 @@ export default function AddBusiness(){
 
     const categories = ["Food", "Fashion", "Technology"]
     
-
     const handleMapPress = (event) => {
         const {coordinate} = event.nativeEvent;
         setCoordMark(coordinate);
