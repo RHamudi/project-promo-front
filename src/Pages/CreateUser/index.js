@@ -21,7 +21,23 @@ export default function CreateUser({navigation}){
         }
     })
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        axiosApi({
+            method: 'POST',
+            url: "user/insert",
+            data: {
+                Name: data.Name,
+                Email: data.Email,
+                Password: data.Password,
+                IdBusiness: ""
+            }
+        }).then((res)=> {
+            console.log(res.data)
+            navigation.navigate("Login")
+        }
+        )
+        .catch((err)=> console.log(err))
+    }
 
     function CreateUser(){
         axiosApi({
@@ -48,7 +64,7 @@ export default function CreateUser({navigation}){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: "Digite um nome",
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -67,7 +83,11 @@ export default function CreateUser({navigation}){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: "Digite um email",
+                    pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Digite um endereço de email valido"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -86,21 +106,22 @@ export default function CreateUser({navigation}){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    minLength: 6
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
                         <TextInput 
-                            placeholder="Digite seu nome"
+                            placeholder="Digite sua senha"
                             onBlur={onBlur}
                             onChangeText={onChange}
                             value={value}
                         />
                     )}
-                name="Senha"
+                name="Password"
             />
-            {errors.Senha && <Text>{errors.Senha.message}</Text>}
-
+            {errors.Password && <Text>{errors.Password.message}</Text>}
+            
             <Button
                 title="Criar"
                 onPress={handleSubmit(onSubmit)}
