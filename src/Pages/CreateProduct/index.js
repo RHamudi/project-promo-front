@@ -26,17 +26,27 @@ export default function CreateProduct(){
             Price: ""    
         }
     })
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        formData.append("IdBusiness", IdBusiness)
+        formData.append("Name", data.Name)
+        formData.append("Description", data.Description)
+        if(Images)formData.append("Images", {
+            uri: Images.uri,
+            type: "image/jpeg",
+            name: "testando"
+        })
+        formData.append("Price", data.Price)
 
-    formData.append("IdBusiness", IdBusiness)
-    formData.append("Name", Name)
-    formData.append("Description", Description)
-    if(Images)formData.append("Images", {
-        uri: Images.uri,
-        type: "image/jpeg",
-        name: "testando"
-    })
-    formData.append("Price", Price)
+        axiosApi({
+            method: "post",
+            url: "product/insert",
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+        }).then((res)=> console.log(res))
+        .catch((err)=> console.log(err))
+    }
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -49,17 +59,6 @@ export default function CreateProduct(){
         if(!result.canceled){
             setImages(result.assets[0])
         }
-    }
-
-    function AddProduct(){
-        axiosApi({
-            method: "post",
-            url: "product/insert",
-            data: formData,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-        }).then((res)=> console.log(res)).catch((err)=> console.log(err))
     }
 
     return (
