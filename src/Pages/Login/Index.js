@@ -74,6 +74,7 @@ const Login = ({navigation}) => {
                 name='Email'
             />
             {errors.Email && <Text>{errors.Email.message}</Text>}
+
             <Controller 
                 control={control}
                 rules={{
@@ -91,10 +92,12 @@ const Login = ({navigation}) => {
                 name='Password'
             />
             {errors.Password && <Text>{errors.Password.message}</Text>}
+
             <Button 
                 title='submit'
                 onPress={handleSubmit(onSubmit)}
             />
+            
             <Text>Não possui uma conta? </Text>
             <TouchableOpacity style={styles.button} onPress={onPress}>
                 <Text>Clique aqui!</Text>

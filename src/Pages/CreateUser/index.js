@@ -32,25 +32,6 @@ export default function CreateUser({navigation}){
                 IdBusiness: ""
             }
         }).then((res)=> {
-            console.log(res.data)
-            navigation.navigate("Login")
-        }
-        )
-        .catch((err)=> console.log(err))
-    }
-
-    function CreateUser(){
-        axiosApi({
-            method: 'POST',
-            url: "user/insert",
-            data: {
-                Name: Name,
-                Email: Email,
-                Password: Password,
-                IdBusiness: ""
-            }
-        }).then((res)=> {
-            console.log(res.data)
             navigation.navigate("Login")
         }
         )
