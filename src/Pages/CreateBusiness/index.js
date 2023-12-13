@@ -41,23 +41,36 @@ export default function AddBusiness(){
         }
     })
     
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        formData.append("IdUser", User.idUsuario)
+        formData.append("Name", data.Name)
+        formData.append('Description', data.Description)
+        if(Logo)formData.append("Logo", {
+            uri: Logo.uri,
+            type: 'image/jpeg',
+            name: 'Teste'
+        })
+        formData.append("Email", data.Email)
+        formData.append("Number", data.Number)
+        formData.append("Site", data.Site)
+        formData.append("Category", Category)
+        formData.append("Operation", data.Operation)
+        formData.append("GeoData", GeoData)
+        formData.append("Location", data.Location)
 
-    formData.append("IdUser", User.idUsuario)
-    formData.append("Name", "Testando arouba")
-    formData.append('Description', "Essa é uma descricao foda")
-    if(Logo)formData.append("Logo", {
-        uri: Logo.uri,
-        type: 'image/jpeg',
-        name: 'Teste'
-    })
-    formData.append("Email", "emai@gmail.com")
-    formData.append("Number", "(81) 2923-3948")
-    formData.append("Site", "hhtps.:sdkasdj")
-    formData.append("Category", 2)
-    formData.append("Operation", "de la ate aqui aqi ate la")
-    formData.append("GeoData", GeoData)
-    formData.append("Location", "proximo dali ali aq")
+        axiosApi({
+            method: "post",
+            url: "business/insert",
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+        }).then((res) => {
+            console.log(res)
+        }).catch((err)=> console.log(err))
+    }
+
+    
 
     const categories = ["Food", "Fashion", "Technology"]
     
