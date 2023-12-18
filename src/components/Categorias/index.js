@@ -21,11 +21,11 @@ export default function Categorias()
             height: 150,
             backgroundColor: '#5456'
         }}>
-            <SafeAreaView style={styles.container}>
-                <ScrollView horizontal={true} style={styles.scrollView}>
-                    <View style={styles.containerIcons}>
+            <SafeAreaView style={styles.containerCategs}>
+                <ScrollView horizontal={true} style={styles.scrollViewCategs}>
+                    <View style={styles.containerIconsCategs}>
                         <Text style={{paddingBottom: 15, fontSize: 20}}>Categorias</Text>
-                        <View style={styles.viewIcons}>
+                        <View style={styles.viewIconsCategs}>
                             <View style={styles.icons}>
                                 <FontAwesome5 name="tshirt" size={35} color="black" />
                             </View>
@@ -44,21 +44,21 @@ export default function Categorias()
 }
 
 const styles = StyleSheet.create({
-    container: {
+    containerCategs: {
         flex: 1,
         paddingTop: StatusBar.currentHeight,
     },
-    scrollView: {
+    scrollViewCategs: {
         
     },
-    containerIcons: {
+    containerIconsCategs: {
         alignItems:'center',
         justifyContent: 'center'
     },
     text: {
         fontSize: 42,
     },
-    viewIcons: {
+    viewIconsCategs: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
