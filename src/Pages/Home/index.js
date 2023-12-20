@@ -20,6 +20,7 @@ import { useState, useEffect } from 'react';
 
 export default function Home({navigation}) {
   const [req, setReq] = useState([]);
+  const [filter, setFilter] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [selectCateg, setSelectCateg] = useState(null);
 
@@ -36,7 +37,7 @@ export default function Home({navigation}) {
 
   function filterReq(number){
     const filteredArray = req.filter(item => item.categoria == number)
-    setReq(filteredArray)
+    setFilter(filteredArray)
   }
 
   useEffect(()=> {
@@ -57,15 +58,19 @@ export default function Home({navigation}) {
                         <Text style={{paddingBottom: 15, fontSize: 20}}>Categorias</Text>
                         <View style={styles.viewIconsCategs}>
                           <TouchableHighlight onPress={() => {
-                            filterReq(1)
+                              filterReq(1)
                           }}>
                             <View style={styles.icons}>
                                 <FontAwesome5 name="tshirt" size={35} color="black" />
                             </View>
                           </TouchableHighlight>
+                          <TouchableHighlight onPress={() => {
+                            filterReq(2)
+                          }}>
                             <View style={styles.icons}>
                                 <Ionicons name="fast-food" size={35} color="black" />
                             </View>
+                          </TouchableHighlight>
                             <View style={styles.icons}>
                                 <MaterialIcons name="computer" size={35} color="black" />
                             </View>
@@ -76,7 +81,7 @@ export default function Home({navigation}) {
         </View>
         
           <FlatList 
-          data={req}
+          data={filter}
           renderItem={({item}) => 
             <TouchableHighlight onPress={()=> navigation.navigate('Business', {item: item})}>
               <Business  item={item}/>
