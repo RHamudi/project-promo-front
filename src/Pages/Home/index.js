@@ -81,7 +81,7 @@ export default function Home({navigation}) {
         </View>
         
           <FlatList 
-          data={filter}
+          data={filter.length == 0 ? req : filter}
           renderItem={({item}) => 
             <TouchableHighlight onPress={()=> navigation.navigate('Business', {item: item})}>
               <Business  item={item}/>
