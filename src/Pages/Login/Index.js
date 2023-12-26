@@ -52,46 +52,53 @@ const Login = ({navigation}) => {
     }
 
     return (
-        <View style={styles.container}>
-            <Controller 
-                control={control}
-                rules={{
-                    required: true,
-                    pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: "Digite um endereço de email valido"
-                    }
-                }}
-                render={({
-                    field: {onChange, onBlur, value}}) => (
-                        <TextInput 
-                            placeholder='Digite seu Email'
-                            onBlur={onBlur}
-                            onChangeText={onChange}
-                            value={value}
-                        />
-                    )}
-                name='Email'
-            />
-            {errors.Email && <Text>{errors.Email.message}</Text>}
+        <View className="flex-1 justify-center items-center gap-y-2">
+            <View className="grid gap-6 mb-6">
+                <Controller 
+                    control={control}
+                    rules={{
+                        required: true,
+                        pattern: {
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                            message: "Digite um endereço de email valido"
+                        }
+                    }}
+                    render={({
+                        field: {onChange, onBlur, value}}) => (
+                            <>
+                            <Text nativeID='formEmail' className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">E-mail</Text>
+                            <TextInput 
+                                aria-aria-labelledby='formEmail'
+                                className="py-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder='Digite seu Email'
+                                onBlur={onBlur}
+                                onChangeText={onChange}
+                                value={value}
+                            />
+                            </>
+                        )}
+                    name='Email'
+                />
+                {errors.Email && <Text>{errors.Email.message}</Text>}
 
-            <Controller 
-                control={control}
-                rules={{
-                    required: "Digite uma senha"
-                }}
-                render={({
-                    field: {onChange, onBlur, value}}) => (
-                        <TextInput 
-                            placeholder='Digite sua senha'
-                            onBlur={onBlur}
-                            onChangeText={onChange}
-                            value={value}
-                        />
-                    )}
-                name='Password'
-            />
-            {errors.Password && <Text>{errors.Password.message}</Text>}
+                <Controller 
+                    control={control}
+                    rules={{
+                        required: "Digite uma senha"
+                    }}
+                    render={({
+                        field: {onChange, onBlur, value}}) => (
+                            <TextInput 
+                                placeholder='Digite sua senha'
+                                onBlur={onBlur}
+                                onChangeText={onChange}
+                                value={value}
+                            />
+                        )}
+                    name='Password'
+                />
+                {errors.Password && <Text>{errors.Password.message}</Text>}
+            </View>
 
             <Button 
                 title='submit'
@@ -100,7 +107,7 @@ const Login = ({navigation}) => {
             
             <Text>Não possui uma conta? </Text>
             <TouchableOpacity style={styles.button} onPress={onPress}>
-                <Text>Clique aqui!</Text>
+                <Text className="text-blue-600">Clique aqui!</Text>
             </TouchableOpacity>
         </View>
     );

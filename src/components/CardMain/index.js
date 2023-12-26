@@ -9,7 +9,7 @@ const CardMain = ({item}) => {
         axiosApi.get(`product/getbyid?idEmpresa=${item.idEmpresa}`).then((response)=> {     
             setReq(response.data.data)
         }).catch((err) => console.log(err))
-    }, [])
+    }, [item])
 
     return (
         <View style={styles.container}>

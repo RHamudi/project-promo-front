@@ -71,9 +71,13 @@ export default function Home({navigation}) {
                                 <Ionicons name="fast-food" size={35} color="black" />
                             </View>
                           </TouchableHighlight>
+                          <TouchableHighlight onPress={() => {
+                            filterReq(3)
+                          }}>
                             <View style={styles.icons}>
                                 <MaterialIcons name="computer" size={35} color="black" />
                             </View>
+                          </TouchableHighlight>
                         </View>
                     </View>
                 </ScrollView>
