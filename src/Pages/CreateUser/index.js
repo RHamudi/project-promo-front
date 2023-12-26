@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View, TouchableOpacity } from "react-native";
 import { axiosApi } from "../../Services/http-client";
 import {useForm, Controller} from 'react-hook-form';
 
@@ -109,10 +109,12 @@ export default function CreateUser({navigation}){
                 {errors.Password && <Text>{errors.Password.message}</Text>}
             </View>
             
-            <Button
-                title="Criar"
-                onPress={handleSubmit(onSubmit)}
-            />
+            <TouchableOpacity onPress={handleSubmit(onSubmit)}>
+                <Text className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Criar usuario
+                    </Text>
+            </TouchableOpacity>
+        
         </View>
     )
 }
