@@ -106,7 +106,7 @@ export default function CreateUser({navigation}){
                         )}
                     name="Password"
                 />
-                {errors.Password && <Text>{errors.Password.message}</Text>}
+                {errors.Password && <Text>Digite uma senha</Text>}
             </View>
             
             <TouchableOpacity onPress={handleSubmit(onSubmit)}>
