@@ -79,7 +79,7 @@ const Login = ({navigation}) => {
                         )}
                     name='Email'
                 />
-                {errors.Email && <Text>{errors.Email.message}</Text>}
+                {errors.Email && <Text>Digite um E-mail valido</Text>}
 
                 <Controller 
                     control={control}
@@ -105,7 +105,9 @@ const Login = ({navigation}) => {
             </View>
             
             <TouchableOpacity onPress={handleSubmit(onSubmit)}>
-                <Text className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</Text>
+                <Text className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Submit
+                    </Text>
             </TouchableOpacity>
             
             <Text>Não possui uma conta? </Text>
