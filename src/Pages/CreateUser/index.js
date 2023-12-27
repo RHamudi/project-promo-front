@@ -41,7 +41,7 @@ export default function CreateUser({navigation}){
     return(
         <View className="flex-1 justify-center items-center gap-y-2">
             <Text>Criar usuario</Text>
-            <View>
+            <View className="gap-y-2">
                 
                 <Text className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</Text>
                 <Controller 
