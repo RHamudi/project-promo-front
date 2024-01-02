@@ -1,17 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { signin } from '../../Redux/LoginSlice';
 import { axiosApi } from '../../Services/http-client';
 import {useForm, Controller} from 'react-hook-form'
 
 const Login = ({navigation}) => {
-    const [User, SetUser] = useState();
-    const [Pass, SetPass] = useState();
-    const Dispach = useDispatch();
-    // const {Token} = useSelector(useStateLogin)
-   // const {AuthenticatedIs} = useSelector(useStateLogin)
    const {
     control,
     handleSubmit,
@@ -34,19 +27,7 @@ const Login = ({navigation}) => {
             Dispach(signin(response.data))
         }).catch((err) => console.log(err))
    }
-    function Authentication(){
-        axiosApi({
-            method: 'post',
-            url: "user/Authentication",
-            data: {
-                email: User,
-                password: Pass
-            }
-        }).then((response)=> {
-           Dispach(signin(response.data))
-        }).catch((err) => console.log(err))
-    }
-
+    
     function onPress(){
         navigation.navigate("AddUser")
     }
