@@ -8,6 +8,8 @@ import Account from '../Account';
 import AddBusiness from '../CreateBusiness';
 import CreateUser from '../CreateUser';
 import Login from '../Login'
+import { SimpleLineIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import CreateProduct from '../CreateProduct';
 
 const Tab = createBottomTabNavigator();
@@ -19,11 +21,24 @@ export function CompanyStackScreen() {
 
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Home" component={Home} 
+        options={{
+          tabBarIcon: () => <SimpleLineIcons name="home" size={24} color="black" /> 
+        }}
+      />
       {AuthenticatedIs ? (
-        <Tab.Screen name="Login" component={Account}/>
+        <Tab.Screen name="Account" component={Account} 
+          options={{
+            tabBarIcon: () => <MaterialIcons name="account-circle" size={24} color="black" />
+          }}
+        />
       ) : (
-        <Tab.Screen name="Login" component={Login}/>
+        <Tab.Screen name="Login" component={Login}
+        options={{
+          
+          tabBarIcon: () => <SimpleLineIcons name="login" size={24} color="black" />
+        }}
+        />
       )}
     </Tab.Navigator>
     
