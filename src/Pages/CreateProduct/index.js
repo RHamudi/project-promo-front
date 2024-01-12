@@ -6,6 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { axiosApi } from "../../Services/http-client";
 import {useForm, Controller} from 'react-hook-form';
 
+
 export default function CreateProduct(){
     const {User} = useSelector(useStateLogin);
     const [IdBusiness, setIdBusiness] = useState(User.idEmpresa);
@@ -27,6 +28,7 @@ export default function CreateProduct(){
         }
     })
     const onSubmit = (data) => {
+        
         formData.append("IdBusiness", IdBusiness)
         formData.append("Name", data.Name)
         formData.append("Description", data.Description)
@@ -44,7 +46,9 @@ export default function CreateProduct(){
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
-        }).then((res)=> console.log(res))
+        }).then((res)=> {
+            
+        })
         .catch((err)=> console.log(err))
     }
 
