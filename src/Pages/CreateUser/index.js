@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Text, TextInput, View, TouchableOpacity } from "react-native";
 import { axiosApi } from "../../Services/http-client";
 import {useForm, Controller} from 'react-hook-form';
+import { ALERT_TYPE, Toast, Dialog } from "react-native-alert-notification";
 
 export default function CreateUser({navigation}){
     const [Name, setName] = useState()
@@ -33,6 +34,12 @@ export default function CreateUser({navigation}){
             }
         }).then((res)=> {
             navigation.navigate("Login")
+            Dialog.show({
+                type: ALERT_TYPE.SUCCESS,
+                title: "Por favor Verifique seu email!",
+                textBody: "Enviamos um link para o seu email, por favor confirme sua conta clicando no link.",
+                button: 'Fechar'
+            })
         }
         )
         .catch((err)=> console.log(err))
