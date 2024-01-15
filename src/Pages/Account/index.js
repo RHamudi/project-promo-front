@@ -6,13 +6,19 @@ export default function Account({navigation}){
     const {Token} = useSelector(useStateLogin)
     const {User} = useSelector(useStateLogin)
 
+    
     return (
         <View>
             <Text>Usuario: {User.nome}</Text>
-            <Button 
+            {User.idEmpresa ? 
+            null
+            :
+            (<Button 
                 title="Criar Empresa"
                 onPress={()=> navigation.navigate("AddBusiness")}
-            />
+            />)
+            }
+            
             <Button
                 title="Criar produtos"
                 onPress={()=> navigation.navigate("AddProduct")}
