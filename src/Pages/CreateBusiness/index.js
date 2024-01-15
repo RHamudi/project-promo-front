@@ -9,15 +9,8 @@ import { axiosApi } from "../../Services/http-client";
 import {useForm, Controller} from 'react-hook-form';
 
 export default function AddBusiness(){
-    const [Name, setName] = useState();
-    const [Description, setDescription] = useState();
     const [Logo, setLogo] = useState();
-    const [Location, setLocation] = useState();
-    const [Email, setEmail] = useState();
-    const [Number, setNumber] = useState();
-    const [Site, setSite] = useState();
     const [Category, setCategory] = useState();
-    const [Operation, setOperation] = useState();
     const [GeoData, setGeoData] = useState();
     const [CoordMark, setCoordMark] = useState();
     const {User} = useSelector(useStateLogin);
@@ -69,8 +62,6 @@ export default function AddBusiness(){
             console.log(res)
         }).catch((err)=> console.log(err))
     }
-
-    
 
     const categories = ["Food", "Fashion", "Technology"]
     
