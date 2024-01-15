@@ -108,7 +108,10 @@ export default function AddBusiness(){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        message: "Digite um nome valido"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -127,7 +130,10 @@ export default function AddBusiness(){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        message: "Digite uma descrição valida"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -152,7 +158,10 @@ export default function AddBusiness(){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        message: "Digite uma informação valida"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -171,7 +180,11 @@ export default function AddBusiness(){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Digite um endereço de email valido"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -190,7 +203,10 @@ export default function AddBusiness(){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        message: "Digite um numero valido"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -209,7 +225,10 @@ export default function AddBusiness(){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        message: "Cole aqui um link valido"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -242,7 +261,10 @@ export default function AddBusiness(){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        message: "Digite o orario de operação valido"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
