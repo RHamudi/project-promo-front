@@ -10,10 +10,7 @@ import {useForm, Controller} from 'react-hook-form';
 export default function CreateProduct(){
     const {User} = useSelector(useStateLogin);
     const [IdBusiness, setIdBusiness] = useState(User.idEmpresa);
-    const [Name, setName] = useState();
-    const [Description, setDescription] = useState();
     const [Images, setImages] = useState();
-    const [Price, setPrice] = useState();
     const formData = new FormData();
 
     const {
@@ -71,7 +68,10 @@ export default function CreateProduct(){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        message: "Digite um nome valido"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -85,11 +85,15 @@ export default function CreateProduct(){
                 name="Name"
             />
             {errors.Name && <Text>{errors.Name.message}</Text>}
+
             <Text>Digite a descrição do produto</Text>
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        message: "Digite uma descrição valida"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
@@ -112,7 +116,10 @@ export default function CreateProduct(){
             <Controller 
                 control={control}
                 rules={{
-                    required: true
+                    required: true,
+                    pattern: {
+                        message: "Digite um preço"
+                    }
                 }}
                 render={({
                     field: {onChange, onBlur, value}}) => (
