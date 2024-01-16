@@ -17,12 +17,14 @@ import Categorias from '../../components/Categorias/index';
 import Business from '../../components/Business/Index';
 import { axiosApi } from '../../Services/http-client'
 import { useState, useEffect } from 'react';
+import { TextInput } from "react-native-gesture-handler";
 
 export default function Home({navigation}) {
   const [req, setReq] = useState([]);
   const [filter, setFilter] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [selectCateg, setSelectCateg] = useState(null);
+  const [searchText, setSearchText] = useState();
 
   function fecthData(){
     setRefreshing(true);
@@ -44,48 +46,30 @@ export default function Home({navigation}) {
     fecthData();
   }, [])
 
+  useEffect(()=> {
+    if(searchText == "") setFilter(req)
+    else {
+      setFilter(
+        req.filter(item => {
+          if(item.nome.toLowerCase().indexOf(searchText.toLowerCase()) > -1) return true
+          else return false
+        })
+      )
+    }
+  }, [searchText])
+
   return (
       <View style={styles.container}>
-        <View style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: 150,
-            backgroundColor: '#5456'
-        }}>
-            <SafeAreaView style={styles.containerCategs}>
-                <ScrollView horizontal={true} style={styles.scrollViewCategs}>
-                    <View style={styles.containerIconsCategs}>
-                        <Text style={{paddingBottom: 15, fontSize: 20}}>Categorias</Text>
-                        <View style={styles.viewIconsCategs}>
-                          <TouchableHighlight onPress={() => {
-                              filterReq(1)
-                          }}>
-                            <View style={styles.icons}>
-                                <FontAwesome5 name="tshirt" size={35} color="black" />
-                            </View>
-                          </TouchableHighlight>
-                          <TouchableHighlight onPress={() => {
-                            filterReq(2)
-                          }}>
-                            <View style={styles.icons}>
-                                <Ionicons name="fast-food" size={35} color="black" />
-                            </View>
-                          </TouchableHighlight>
-                          <TouchableHighlight onPress={() => {
-                            filterReq(3)
-                          }}>
-                            <View style={styles.icons}>
-                                <MaterialIcons name="computer" size={35} color="black" />
-                            </View>
-                          </TouchableHighlight>
-                        </View>
-                    </View>
-                </ScrollView>
-            </SafeAreaView> 
+        <View>
+          <TextInput 
+            style={styles.input}
+            onChangeText={setSearchText}
+            value={searchText}
+          />
         </View>
         
           <FlatList 
-          data={filter.length == 0 ? req : filter}
+          data={filter}
           renderItem={({item}) => 
             <TouchableHighlight onPress={()=> navigation.navigate('Business', {item: item})}>
               <Business  item={item}/>
@@ -107,12 +91,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#003366',
+  },input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
   cards: {
   },
   containerCategs: {
     flex: 1,
-    paddingTop: StatusBar.currentHeight,
+    paddingTop: 0,
   },
   scrollViewCategs: {
       
