@@ -10,10 +10,6 @@ import {
   TouchableHighlight,
   Button,
 } from "react-native";
-import { FontAwesome5 } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
-import Categorias from '../../components/Categorias/index';
 import Business from '../../components/Business/Index';
 import { axiosApi } from '../../Services/http-client'
 import { useState, useEffect } from 'react';
@@ -24,7 +20,7 @@ export default function Home({navigation}) {
   const [filter, setFilter] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [selectCateg, setSelectCateg] = useState(null);
-  const [searchText, setSearchText] = useState();
+  const [searchText, setSearchText] = useState("");
 
   function fecthData(){
     setRefreshing(true);
@@ -47,6 +43,7 @@ export default function Home({navigation}) {
   }, [])
 
   useEffect(()=> {
+    
     if(searchText == "") setFilter(req)
     else {
       setFilter(
