@@ -19,23 +19,18 @@ export default function Home({navigation}) {
   const [req, setReq] = useState([]);
   const [filter, setFilter] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
-  const [selectCateg, setSelectCateg] = useState(null);
   const [searchText, setSearchText] = useState("");
 
-  function fecthData(){
+  async function fecthData(){
     setRefreshing(true);
 
-    axiosApi.get('business/getall').then((response)=> {     
-      setReq(response.data.data)
+    axiosApi.get('business/getall').then((response)=> {  
+      setReq(response.data.data)   
+      setFilter(response.data.data)
       setRefreshing(false);
     }).catch((err) => {
       setRefreshing(false)
     })
-  }
-
-  function filterReq(number){
-    const filteredArray = req.filter(item => item.categoria == number)
-    setFilter(filteredArray)
   }
 
   useEffect(()=> {
@@ -43,7 +38,6 @@ export default function Home({navigation}) {
   }, [])
 
   useEffect(()=> {
-    
     if(searchText == "") setFilter(req)
     else {
       setFilter(
