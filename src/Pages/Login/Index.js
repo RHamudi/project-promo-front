@@ -65,7 +65,7 @@ const Login = ({navigation}) => {
                             <TextInput 
                                 aria-aria-labelledby='formEmail'
                                 placeholderTextColor="#ffff"
-                                className="border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400 mb-3 px-6"
+                                className="border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400  px-6"
                                 placeholder='Digite seu E-mail'
                                 keyboardType='email-address'
                                 onBlur={onBlur}
