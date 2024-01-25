@@ -65,7 +65,7 @@ const Login = ({navigation}) => {
                             <TextInput 
                                 aria-aria-labelledby='formEmail'
                                 placeholderTextColor="#ffff"
-                                className="border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400  px-6"
+                                className="border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400 mb-3 px-6"
                                 placeholder='Digite seu E-mail'
                                 keyboardType='email-address'
                                 onBlur={onBlur}
@@ -76,7 +76,7 @@ const Login = ({navigation}) => {
                         )}
                     name='Email'
                 />
-                {errors.Email && <Text>Digite um E-mail valido</Text>}
+                {errors.Email && <Text className="text-white">Digite um E-mail valido</Text>}
 
                 <Controller 
                     control={control}
@@ -97,7 +97,7 @@ const Login = ({navigation}) => {
                         )}
                     name='Password'
                 />
-                {errors.Password && <Text>{errors.Password.message}</Text>}
+                {errors.Password && <Text className="text-white">{errors.Password.message}</Text>}
             </View>
             
             <TouchableOpacity onPress={handleSubmit(onSubmit)}>
