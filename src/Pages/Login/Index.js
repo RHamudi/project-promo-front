@@ -106,7 +106,7 @@ const Login = ({navigation}) => {
                     </Text>
             </TouchableOpacity>
             
-            <Text>Não possui uma conta? </Text>
+            <Text className="text-white">Não possui uma conta? </Text>
             <TouchableOpacity onPress={onPress}>
                 <Text className="text-blue-600">Clique aqui!</Text>
             </TouchableOpacity>
