@@ -53,70 +53,79 @@ export default function CreateUser({navigation}){
                 className="font-bold text-x text-white text-center pb-3"
             >Criar usuario</Text>
             <View className="gap-y-2">
-                <Text className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</Text>
-                <Controller 
-                    control={control}
-                    rules={{
-                        required: "Digite um nome",
-                    }}
-                    render={({
-                        field: {onChange, onBlur, value}}) => (
-                            <TextInput 
-                                className="py-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Digite seu nome"
-                                onBlur={onBlur}
-                                onChangeText={onChange}
-                                value={value}
-                            />
-                        )}
-                    name="Name"
-                />
-                {errors.Name && <Text>{errors.Name.message}</Text>}
+                <View>
+                    <Text className="block mb-2 text-sm font-medium text-gray-900 text-white">Nome</Text>
+                    <Controller 
+                        control={control}
+                        rules={{
+                            required: "Digite um nome",
+                        }}
+                        render={({
+                            field: {onChange, onBlur, value}}) => (
+                                <TextInput 
+                                    placeholderTextColor="#ffff"
+                                    className="border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400 px-6"
+                                    placeholder="Digite seu nome"
+                                    onBlur={onBlur}
+                                    onChangeText={onChange}
+                                    value={value}
+                                />
+                            )}
+                        name="Name"
+                    />
+                    {errors.Name && <Text className="text-red-600">{errors.Name.message}</Text>}
+                </View>
 
-                <Text className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</Text>
-                <Controller 
-                    control={control}
-                    rules={{
-                        required: "Digite um email",
-                        pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: "Digite um endereço de email valido"
-                        }
-                    }}
-                    render={({
-                        field: {onChange, onBlur, value}}) => (
-                            <TextInput
-                                className="py-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Digite seu nome"
-                                onBlur={onBlur}
-                                onChangeText={onChange}
-                                value={value}
-                            />
-                        )}
-                    name="Email"
-                />
-                {errors.Email && <Text>{errors.Email.message}</Text>}
-
-                <Text className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Senha</Text>
-                <Controller 
-                    control={control}
-                    rules={{
-                        required: true,
-                        minLength: 6
-                    }}
-                    render={({
-                        field: {onChange, onBlur, value}}) => (
-                            <TextInput 
-                                className="py-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Digite sua senha"
-                                onBlur={onBlur}
-                                onChangeText={onChange}
-                                value={value}
-                            />
-                        )}
-                    name="Password"
-                />
-                {errors.Password && <Text>Digite uma senha</Text>}
+                <View>
+                    <Text className="block mb-2 text-sm font-medium text-gray-900 text-white">Email</Text>
+                    <Controller 
+                        control={control}
+                        rules={{
+                            required: "Digite um email",
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Digite um endereço de email valido"
+                            }
+                        }}
+                        render={({
+                            field: {onChange, onBlur, value}}) => (
+                                <TextInput
+                                    placeholderTextColor="#ffff"
+                                    className="border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400 w-72 px-6" 
+                                    placeholder="Digite seu nome"
+                                    onBlur={onBlur}
+                                    onChangeText={onChange}
+                                    value={value}
+                                />
+                            )}
+                        name="Email"
+                    />
+                    {errors.Email && <Text className="text-red-600">{errors.Email.message}</Text>}
+                </View>
+                
+                <View>
+                    <Text className="block mb-2 text-sm font-medium text-gray-900 text-white">Senha</Text>
+                    <Controller 
+                        control={control}
+                        rules={{
+                            required: true,
+                            minLength: 6
+                        }}
+                        render={({
+                            field: {onChange, onBlur, value}}) => (
+                                <TextInput 
+                                    placeholderTextColor="#ffff"
+                                    className="border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400 px-6"
+                                    placeholder="Digite sua senha"
+                                    onBlur={onBlur}
+                                    onChangeText={onChange}
+                                    value={value}
+                                />
+                            )}
+                        name="Password"
+                    />
+                    {errors.Password && <Text className="text-red-600">Digite uma senha</Text>}
+                </View>
             </View>
             
             <TouchableOpacity onPress={handleSubmit(onSubmit)}>
