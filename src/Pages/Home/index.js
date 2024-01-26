@@ -33,10 +33,12 @@ export default function Home({navigation}) {
     })
   }
 
+  //requisição api
   useEffect(()=> {
     fecthData();
   }, [])
 
+  //filtro de pesquisa
   useEffect(()=> {
     if(searchText == "") setFilter(req)
     else {
@@ -50,13 +52,9 @@ export default function Home({navigation}) {
   }, [searchText])
 
   return (
-      <View style={styles.container}>
-        <View>
-          <TextInput 
-            style={styles.input}
-            onChangeText={setSearchText}
-            value={searchText}
-          />
+      <View className="flex-1 bg-blue-950">
+        <View className="h-44">
+
         </View>
         
           <FlatList 
@@ -82,38 +80,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#003366',
-  },input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-  cards: {
-  },
-  containerCategs: {
-    flex: 1,
-    paddingTop: 0,
-  },
-  scrollViewCategs: {
-      
-  },
-  containerIconsCategs: {
-      alignItems:'center',
-      justifyContent: 'center'
-  },
-  text: {
-      fontSize: 42,
-  },
-  viewIconsCategs: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      gap: 10
-  },
-  icons: {
-      backgroundColor: 'rgba(124, 131, 133, 0.8)',
-      flexDirection: 'row',
-      padding: 4,
-      borderRadius: 5
   }
 });

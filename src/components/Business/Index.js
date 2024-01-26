@@ -5,16 +5,8 @@ import { axiosApi } from '../../Services/http-client'
 
 export default function Business({item}) {
     return (
-        <ScrollView style={styles.cards}>
+        <ScrollView>
             <Main item={item}/>
         </ScrollView>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-      backgroundColor: '#003366',
-    },
-    cards: {
-    }
-  });
