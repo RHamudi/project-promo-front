@@ -5,9 +5,6 @@ import {useForm, Controller} from 'react-hook-form';
 import { ALERT_TYPE, Toast, Dialog } from "react-native-alert-notification";
 
 export default function CreateUser({navigation}){
-    const [Name, setName] = useState()
-    const [Email, setEmail] = useState()
-    const [Password, setPassword] = useState()
 
     const {
         control,
@@ -46,10 +43,16 @@ export default function CreateUser({navigation}){
     }
 
     return(
-        <View className="flex-1 justify-center items-center gap-y-2">
-            <Text>Criar usuario</Text>
+        <View className="flex-1 justify-center items-center gap-y-2 bg-blue-950">
+            <Text 
+                className="font-bold text-4xl text-white text-center pb-6">
+                MyCompany.
+            </Text>
+
+            <Text
+                className="font-bold text-x text-white text-center pb-3"
+            >Criar usuario</Text>
             <View className="gap-y-2">
-                
                 <Text className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nome</Text>
                 <Controller 
                     control={control}

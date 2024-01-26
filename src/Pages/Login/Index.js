@@ -39,7 +39,7 @@ const Login = ({navigation}) => {
 
     return (
         <View className="flex-1 justify-center items-center gap-y-2 bg-blue-950">
-            <View className="justify-center ">
+            <View className="justify-center">
                 <Text 
                     className="font-bold text-4xl text-white text-center pb-14">
                     MyCompany.
