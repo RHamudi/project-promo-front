@@ -53,8 +53,10 @@ export default function Home({navigation}) {
 
   return (
       <View className="flex-1 bg-blue-950">
-        <View className="h-44">
-
+        <View className="h-32 justify-center">
+          <Text className="font-bold text-4xl text-white  content-center text-center">
+            MyCorp.
+          </Text>
         </View>
         
           <FlatList 
