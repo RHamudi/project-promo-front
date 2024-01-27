@@ -4,17 +4,21 @@ import CardMain from "../CardMain";
 
 export default function Main({item})
 {
+    console.log(item)
     return(
-        <View className="bg-cyan-800">
+        <View className="flex bg-cyan-800 h-40 rounded-lg">
             <View>
-                <View style={styles.containerTitle}>
-                    <Image 
-                    style={styles.image}
+                <View className="flex flex-row">
+                    <Image
+                    className="w-40 h-40 rounded-l-lg"
                     src={item.logoImagem}
                     />
-                    <Text style={styles.title}>{item.nome}</Text>
+                    <View>
+                        <Text numberOfLines={2} className="text-white font-extrabold text-xl flex-wrap w-40">{item.nome}</Text>
+                        <Text>{item.categoria}</Text>
+                    </View>
                 </View>
-                <CardMain item={item}/>
+               
             </View>
         </View>
     )
@@ -29,8 +33,8 @@ const styles = StyleSheet.create({
     },
     image: {
         borderRadius: 20,
-        height: 40,
-        width: 40,
+        height: 100,
+        width: 100,
     },
     title: {
         textAlignVertical: 'center'
