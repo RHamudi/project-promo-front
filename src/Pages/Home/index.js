@@ -58,7 +58,7 @@ export default function Home({navigation}) {
           </Text>
           
         </View>
-        <View className="flex justify-center">
+        <View className="flex justify-center mb-32">
           <FlatList 
           data={filter}
           renderItem={({item}) => 
