@@ -1,19 +1,15 @@
 import { 
   Text,
   View,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   FlatList,
   RefreshControl,
-  TouchableHighlight,
-  Button,
+  TouchableHighlight
 } from "react-native";
 import Business from '../../components/Business/Index';
 import { axiosApi } from '../../Services/http-client'
 import { useState, useEffect } from 'react';
-import { TextInput } from "react-native-gesture-handler";
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function Home({navigation}) {
   const [req, setReq] = useState([]);
@@ -53,10 +49,14 @@ export default function Home({navigation}) {
 
   return (
       <View className="flex-1 bg-blue-950">
-        <View className="h-32 justify-center">
-          <Text className="font-bold text-4xl text-white  content-center text-center">
+        <View className="relative h-32 p-4">
+          <View className="absolute top-0 right-0 m-4">
+            <FontAwesome name="search" size={24} color="white" />
+          </View>
+          <Text className="font-bold text-4xl text-white absolute top-1/2 right-1/3 transform">
             MyCorp.
           </Text>
+          
         </View>
         
           <FlatList 
