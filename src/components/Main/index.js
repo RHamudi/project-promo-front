@@ -5,7 +5,7 @@ import CardMain from "../CardMain";
 export default function Main({item})
 {
     return(
-        <View style={styles.container}>
+        <View className="bg-cyan-800">
             <View>
                 <View style={styles.containerTitle}>
                     <Image 

@@ -48,8 +48,8 @@ export default function Home({navigation}) {
   }, [searchText])
 
   return (
-      <View className="flex-1 bg-blue-950">
-        <View className="relative h-32 p-4">
+      <View className="flex-1 bg-white">
+        <View className="relative h-32 p-4 bg-blue-950">
           <View className="absolute top-0 right-0 m-4">
             <FontAwesome name="search" size={24} color="white" />
           </View>
@@ -58,12 +58,12 @@ export default function Home({navigation}) {
           </Text>
           
         </View>
-        
+        <View className="flex justify-center">
           <FlatList 
           data={filter}
           renderItem={({item}) => 
-            <TouchableHighlight onPress={()=> navigation.navigate('Business', {item: item})}>
-              <Business  item={item}/>
+            <TouchableHighlight className="m-4" onPress={()=> navigation.navigate('Business', {item: item})}>
+              <Business item={item}/>
             </TouchableHighlight>}
           keyExtractor={item => item.idEmpresa}
           refreshControl={
@@ -73,6 +73,7 @@ export default function Home({navigation}) {
             />
           }
           />
+        </View>
         
       </View>
   );
