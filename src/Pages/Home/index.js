@@ -78,10 +78,3 @@ export default function Home({navigation}) {
       </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#003366',
-  }
-});
