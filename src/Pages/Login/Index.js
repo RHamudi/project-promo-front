@@ -88,7 +88,8 @@ const Login = ({navigation}) => {
                             <>
                             <TextInput 
                                 placeholderTextColor="#ffff"
-                                className="border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400 w-72 px-6"                                placeholder='Digite sua senha'
+                                className="border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400 w-72 px-6"
+                                placeholder='Digite sua senha'
                                 onBlur={onBlur}
                                 onChangeText={onChange}
                                 value={value}
@@ -101,7 +102,8 @@ const Login = ({navigation}) => {
             </View>
             
             <TouchableOpacity onPress={handleSubmit(onSubmit)}>
-                <Text className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <Text className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium 
+                    rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Entrar
                     </Text>
             </TouchableOpacity>
