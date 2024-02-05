@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { axiosApi } from "../../Services/http-client"
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import MapView, { Marker } from "react-native-maps";
 
 
@@ -15,69 +17,69 @@ export default function Business({route}){
     useEffect(()=> {
         axiosApi.get(`product/getbyid?idEmpresa=${item.idEmpresa}`).then((response)=> {     
             setReq(response.data.data)
-            
         }).catch((err) => console.log(err))
     }, [])
- 
-    if(req) req.map(img => console.log(img))
     
     return(
         <> 
-        <View style={styles.container}>
+        <View className="flex-col bg-blue-800 items-center h-28">
             <Image 
-                style={styles.logo}
+                className="w-28 h-28 rounded-full absolute top-14"
                 src={item.logoImagem}
             />
-            <Text>
-                {item.nome}
-            </Text>
-            <Text>
-                {item.horarioOperacao}
-            </Text>
-            <Text>
-                {item.descricao}
-            </Text>
         </View>
         <View>
-            <ScrollView style={styles.scroll} horizontal={true}>
-                {req && req.map((img,index) => 
-                <Image
-                key={index}
-                style={styles.cardProduct}
-                src={img.imagens}
-                />
-                )}
-            </ScrollView>
-            <View>
-                <Text>Contatos</Text>
-                <Text>{item.contatos.number}</Text>
-                <Text>{item.contatos.site}</Text>
-                <Text>{item.contatos.email}</Text>
+            <View className="mt-14">
+                <Text className="text-center font-extrabold text-xl text-blue-700">{item.nome}</Text>
+                <Text className="text-center font-extrabold text-xl">Produtos   |   Sobre</Text>
             </View>
-            <View style={styles.mapcontainer}>
-            <MapView
-            initialRegion={{
-                latitude: lat,
-                longitude: long,
-                latitudeDelta: 0.005,
-                longitudeDelta: 0.005
-            }}
-            style={styles.map}
-            >
-                <Marker 
-                    coordinate={{
-                        latitude: lat,
-                        longitude: long,
-                    }}
-                />
-            </MapView>
-        </View>
+            
+            <View className="flex bg-cyan-800 h-40 rounded-lg">
+            {req && req.map((product, index) => 
+                    <View key={index}>
+                        <View className="flex flex-row">
+                            <Image
+                            className="w-40 h-40 rounded-l-lg"
+                            src={product.imagens}
+                            />
+                            <View className="flex justify-between">
+                                <Text numberOfLines={2} className="text-white font-extrabold text-xl flex-wrap w-40">
+                                    {product.nome}</Text>
+                                <Text className="text-white">
+                                    {product.descricao}
+                                </Text>
+                                <Text className="text-white align-middle">
+                                    <Ionicons name="location-sharp" size={24} color="white" />{product.preco}
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+                )}
+            </View>
         </View>
 
         </>
     )
 }
-
+/*<View style={styles.mapcontainer}>
+                <MapView
+                initialRegion={{
+                    latitude: lat,
+                    longitude: long,
+                    latitudeDelta: 0.005,
+                    longitudeDelta: 0.005
+                }}
+                style={styles.map}
+                >
+                    <Marker 
+                        coordinate={{
+                            latitude: lat,
+                            longitude: long,
+                        }}
+                    />
+                </MapView>
+            </View>
+            */
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
