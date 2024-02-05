@@ -4,7 +4,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Main({item})
 {
-    console.log(item)
     return(
         <View className="flex bg-cyan-800 h-40 rounded-lg">
             <View>
