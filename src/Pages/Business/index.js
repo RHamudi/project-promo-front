@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { axiosApi } from "../../Services/http-client"
 import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import MapView, { Marker } from "react-native-maps";
 
@@ -25,37 +26,36 @@ export default function Business({route}){
         <View className="flex-col bg-blue-800 items-center h-28">
             <Image 
                 className="w-28 h-28 rounded-full absolute top-14"
+                
                 src={item.logoImagem}
             />
         </View>
         <View>
             <View className="mt-14">
                 <Text className="text-center font-extrabold text-xl text-blue-700">{item.nome}</Text>
-                <Text className="text-center font-extrabold text-xl">Produtos   |   Sobre</Text>
+                <Text className="text-center font-extrabold text-xl my-5">Produtos   |   Sobre</Text>
             </View>
             
-            <View className="flex bg-cyan-800 h-40 rounded-lg">
             {req && req.map((product, index) => 
-                    <View key={index}>
+                <View className="flex bg-cyan-800 h-36 m-2 rounded-lg">
                         <View className="flex flex-row">
                             <Image
-                            className="w-40 h-40 rounded-l-lg"
+                            className="w-36 h-36 rounded-l-lg"
                             src={product.imagens}
                             />
                             <View className="flex justify-between">
-                                <Text numberOfLines={2} className="text-white font-extrabold text-xl flex-wrap w-40">
+                                <Text numberOfLines={2} className="text-white font-extrabold text-xl flex-wrap w-40 p-2">
                                     {product.nome}</Text>
-                                <Text className="text-white">
+                                <Text className="text-white ml-2">
                                     {product.descricao}
                                 </Text>
                                 <Text className="text-white align-middle">
-                                    <Ionicons name="location-sharp" size={24} color="white" />{product.preco}
+                                <FontAwesome name="dollar" size={24} color="white" />{product.preco}
                                 </Text>
                             </View>
                         </View>
                     </View>
                 )}
-            </View>
         </View>
 
         </>
