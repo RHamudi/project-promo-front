@@ -11,6 +11,7 @@ import Login from '../Login/Index'
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import CreateProduct from '../CreateProduct';
+import { Producs } from '../Products';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +54,7 @@ export default function MyStack() {
       <CompanyStack.Screen name="AddBusiness" component={AddBusiness} />
       <CompanyStack.Screen name="AddUser" component={CreateUser} />
       <CompanyStack.Screen name="AddProduct" component={CreateProduct} />
+      <CompanyStack.Screen name="Products" component={Producs} />
     </CompanyStack.Navigator>
   );
 }
