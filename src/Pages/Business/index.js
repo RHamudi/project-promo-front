@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import { Text, View, StyleSheet, Image, ScrollView, TouchableHighlight } from "react-native";
 import { axiosApi } from "../../Services/http-client"
 import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
@@ -7,7 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import MapView, { Marker } from "react-native-maps";
 
 
-export default function Business({route}){
+export default function Business({route, navigation}){
     const [req, setReq] = useState();
     const {item} = route.params;
     let LatLong = item.geoLocalizacao.split(",");
@@ -33,11 +33,19 @@ export default function Business({route}){
         <View>
             <View className="mt-14">
                 <Text className="text-center font-extrabold text-xl text-blue-700">{item.nome}</Text>
-                <Text className="text-center font-extrabold text-xl my-5">Produtos   |   Sobre</Text>
+                <View className="flex flex-row justify-around">
+                    <TouchableHighlight onPress={()=> navigation.navigate("Products", {business: item, products: req})}>
+                        <Text className="text-center font-extrabold text-xl my-5">
+                                Produtos
+                            </Text>
+                    </TouchableHighlight>
+                    <Text className="text-center font-extrabold text-xl my-5">|</Text>
+                    <Text className="text-center font-extrabold text-xl my-5">Sobre</Text>
+                </View>
             </View>
             
             {req && req.map((product, index) => 
-                <View className="flex bg-cyan-800 h-36 m-2 rounded-lg">
+                <View key={index} className="flex bg-cyan-800 h-36 m-2 rounded-lg">
                         <View className="flex flex-row">
                             <Image
                             className="w-36 h-36 rounded-l-lg"
