@@ -40,7 +40,9 @@ export default function Business({route, navigation}){
                             </Text>
                     </TouchableHighlight>
                     <Text className="text-center font-extrabold text-xl my-5">|</Text>
-                    <Text className="text-center font-extrabold text-xl my-5">Sobre</Text>
+                    <TouchableHighlight onPress={() => navigation.navigate("About", {business: item})}>
+                        <Text className="text-center font-extrabold text-xl my-5">Sobre</Text>
+                    </TouchableHighlight>
                 </View>
             </View>
             
