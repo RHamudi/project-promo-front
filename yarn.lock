@@ -7420,6 +7420,10 @@ react-native-gesture-handler@~2.12.0:
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
+react-native-hr@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-hr/-/react-native-hr-1.1.4.tgz#8079783adfc3cc3eb0923ada397523e050a719f7"
+
 react-native-maps@^1.7.1:
   version "1.7.1"
   resolved "https://registry.npmjs.org/react-native-maps/-/react-native-maps-1.7.1.tgz"
