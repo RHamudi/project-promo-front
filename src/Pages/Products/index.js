@@ -1,7 +1,7 @@
 import { Image, Text, View } from "react-native";
 import { FontAwesome } from '@expo/vector-icons';
 
-export function Producs({route})
+export function Products({route})
 {
     const {business} = route.params;
     const {products} = route.params;
