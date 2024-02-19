@@ -18,8 +18,11 @@ export function About({route})
             </View>
             <View
                 style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: StyleSheet.hairlineWidth,
+                    paddingTop: 100,
+                    borderBottomColor: "rgb(21 94 117)",
+                    borderBottomWidth: 10,
+                    borderBottomWidth: 3,
+                    marginHorizontal: 10
                 }}
                 />
         </>
