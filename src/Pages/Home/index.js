@@ -4,7 +4,8 @@ import {
   StyleSheet,
   FlatList,
   RefreshControl,
-  TouchableHighlight
+  TouchableHighlight,
+  TextInput
 } from "react-native";
 import Business from '../../components/Business/Index';
 import { axiosApi } from '../../Services/http-client'
@@ -16,17 +17,28 @@ export default function Home({navigation}) {
   const [filter, setFilter] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [ChangeInput, setChangeInput] = useState(true);
+  const [ChangeOpacity, setChangeOpacity] = useState("opacity-0")
 
-  async function fecthData(){
-    setRefreshing(true);
+  function HandleSearch(){
+    setChangeInput((prevState) => !prevState);
+    if(ChangeInput){
+      setChangeOpacity("opacity-100")
+    } else {
+      setChangeOpacity("opacity-0")
+    }
+  }
 
-    axiosApi.get('business/getall').then((response)=> {  
-      setReq(response.data.data)   
-      setFilter(response.data.data)
-      setRefreshing(false);
-    }).catch((err) => {
-      setRefreshing(false)
-    })
+  //func req api
+    async function fecthData(){
+      setRefreshing(true);
+      axiosApi.get('business/getall').then((response)=> {  
+        setReq(response.data.data)   
+        setFilter(response.data.data)
+        setRefreshing(false);
+      }).catch((err) => {
+        setRefreshing(false)
+      })
   }
 
   //requisição api
@@ -51,12 +63,18 @@ export default function Home({navigation}) {
       <View className="flex-1 bg-white">
         <View className="relative h-32 p-4 bg-blue-950">
           <View className="absolute top-0 right-0 m-4">
-            <FontAwesome name="search" size={24} color="white" />
+            <TouchableHighlight onPress={HandleSearch}>
+              <FontAwesome name="search" size={24} color="white" />
+            </TouchableHighlight>
+              <TextInput 
+                style={{height: 40}}
+                placeholder="Type text"
+                className={ChangeOpacity}
+              />
           </View>
-          <Text className="font-bold text-4xl text-white absolute top-1/2 right-1/3 transform">
-            MyCorp.
-          </Text>
-          
+            <Text on className="font-bold text-4xl text-white absolute top-1/2 right-1/3 transform">
+              MyCorp.
+            </Text> 
         </View>
         <View className="flex justify-center mb-32">
           <FlatList 
