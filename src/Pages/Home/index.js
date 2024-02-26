@@ -62,15 +62,18 @@ export default function Home({navigation}) {
   return (
       <View className="flex-1 bg-white">
         <View className="relative h-32 p-4 bg-blue-950">
-          <View className="absolute top-0 right-0 m-4">
-            <TouchableHighlight onPress={HandleSearch}>
-              <FontAwesome name="search" size={24} color="white" />
-            </TouchableHighlight>
+          <View className="absolute top-0 right-0">
+            {ChangeInput ? 
+              <TouchableHighlight className="mt-2 mr-2" onPress={HandleSearch}>
+                <FontAwesome name="search" size={24} color="white" />
+              </TouchableHighlight>
+              :    
               <TextInput 
-                style={{height: 40}}
+                style={{height: 30}}
                 placeholder="Type text"
-                className={ChangeOpacity}
+                className={`${ChangeOpacity} bg-slate-50 w-screen border-2 border-cyan-600 rounded-2xl p-1.5 text-slate-400 mt-2 px-6`}
               />
+            }
           </View>
             <Text on className="font-bold text-4xl text-white absolute top-1/2 right-1/3 transform">
               MyCorp.
