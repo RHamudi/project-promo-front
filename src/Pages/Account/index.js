@@ -17,8 +17,12 @@ export default function Account({navigation}){
             setBusiness(res.data.data) 
             setLoading(false)
         })
-        .catch((err)=>console.log(err))
+        .catch((err)=>{
+            setLoading(false)
+        })
     },[])
+
+  
     return (
         <>
         {Loading ? 
@@ -30,29 +34,32 @@ export default function Account({navigation}){
             :
             (
                 <View>
-                    <View className="flex-col items-center h-20">
-                        <Image 
-                            className="w-40 h-40 rounded-full"
-                            
-                            src={Business.logoImagem}
-                        />
-                        <Text>{Business.nome}</Text>
-                        
-                </View>
+                    {User.idEmpresa !== null ??
+                        <View className="flex-col items-center h-20">
+                            <>
+                                <Image 
+                                    className="w-40 h-40 rounded-full"
+                                    
+                                    src={Business.logoImagem}
+                                />
+                                <Text>{Business.nome}</Text>
+                            </>
+                        </View>
+                    }
                 <Text>Usuario: {User.nome}</Text>
                 {User.idEmpresa ? 
-                null
+                    (<Button
+                        title="Criar produtos"
+                        onPress={()=> navigation.navigate("AddProduct")}
+                        />)
                 :
-                (<Button 
-                    title="Criar Empresa"
-                    onPress={()=> navigation.navigate("AddBusiness")}
-                />)
+                    (<Button 
+                        title="Criar Empresa"
+                        onPress={()=> navigation.navigate("AddBusiness")}
+                        />)
                 }
                 
-                <Button
-                    title="Criar produtos"
-                    onPress={()=> navigation.navigate("AddProduct")}
-                />
+                
             </View>
             )
         }
