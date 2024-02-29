@@ -15,7 +15,7 @@ export const slice = createSlice({
             try {
                 AsyncStorage.setItem('Token', payload.data.authentication);
             } catch (error) {
-                console.log("erro em salvar o token")
+                console.log("$redux: erro em salvar o token")
             }
             return{...state, AuthenticatedIs: true, Token: payload.data.authentication, User: payload.data.user}
         }
