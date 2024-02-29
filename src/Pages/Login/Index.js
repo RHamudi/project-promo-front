@@ -5,7 +5,7 @@ import { axiosApi } from '../../Services/http-client';
 import {useForm, Controller} from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Notifications } from '../../Hooks';
-import { ALERT_TYPE } from 'react-native-alert-notification';
+import { ALERT_TYPE, Toast } from 'react-native-alert-notification';
 
 const Login = ({navigation}) => {
     const Dispach = useDispatch();
@@ -29,8 +29,19 @@ const Login = ({navigation}) => {
                 password: data.Password
             }
         }).then((response)=> {
-            Dispach(signin(response.data))
-        }).catch((err) => console.log(err))
+            if(response.data.statusCode == 200) {
+                Dispach(signin(response.data))
+                Toast.show({
+                    type: ALERT_TYPE.SUCCESS,
+                    title: response.data.message,
+                })
+            } else{
+                Toast.show({
+                    type: ALERT_TYPE.DANGER,
+                    title: response.data.message,
+                })
+            }
+        }).catch(err => console.log(err))
    }
     
     function onPress(){
