@@ -46,7 +46,24 @@ export default function Account({navigation}){
                             </>
                         </View>
                     }
-                <Text>Usuario: {User.nome}</Text>
+                <View className="flex-col bg-blue-800 justify-center h-32">
+                    <View className="flex-row">
+                        {Business != undefined ?  
+                            <Image 
+                                className="w-28 h-28 ml-2 rounded-full"
+                                src={Business.logoImagem}
+                            />  
+                        :
+                        <Image 
+                            className="w-28 h-28 ml-2 rounded-full"
+                            source={require('../../images/nouser.jpg')}
+                        />
+                        }
+                        <View>
+                            <Text className="text-white text-xl text-bold font-extrabold">Usuario: {User.nome}</Text>
+                        </View>
+                    </View>
+                </View>
                 {User.idEmpresa ? 
                     (<Button
                         title="Criar produtos"
