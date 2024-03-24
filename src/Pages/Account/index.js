@@ -65,18 +65,21 @@ export default function Account({navigation}){
                     </View>
                 </View>
                 {User.idEmpresa ? 
-                    (<Button
-                        title="Criar produtos"
-                        onPress={()=> navigation.navigate("AddProduct")}
-                        />)
+                    (<View className="p-2"> 
+                        <Button
+                            title="Criar produtos"
+                            
+                            onPress={()=> navigation.navigate("AddProduct")}
+                            />
+                    </View>)
                 :
-                    (<Button 
-                        title="Criar Empresa"
-                        onPress={()=> navigation.navigate("AddBusiness")}
-                        />)
+                    (<View classname="p-2">
+                        <Button 
+                            title="Criar Empresa"
+                            onPress={()=> navigation.navigate("AddBusiness")}
+                            />
+                    </View>)
                 }
-                
-                
             </View>
             )
         }
