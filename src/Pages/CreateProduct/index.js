@@ -7,7 +7,7 @@ import { axiosApi } from "../../Services/http-client";
 import {useForm, Controller} from 'react-hook-form';
 
 
-export default function CreateProduct(){
+export default function CreateProduct({navigation}){
     const {User} = useSelector(useStateLogin);
     const [IdBusiness, setIdBusiness] = useState(User.idEmpresa);
     const [Images, setImages] = useState();
@@ -44,7 +44,7 @@ export default function CreateProduct(){
                 'Content-Type': 'multipart/form-data'
             },
         }).then((res)=> {
-            
+            navigation.navigate("Account")
         })
         .catch((err)=> console.log(err))
     }
