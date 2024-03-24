@@ -47,25 +47,27 @@ export default function Business({route, navigation}){
             </View>
             
             {req && req.map((product, index) => 
-                <View key={index} className="flex bg-cyan-800 h-36 m-2 rounded-lg">
-                        <View className="flex flex-row">
-                            <Image
-                            className="w-36 h-36 rounded-l-lg"
-                            src={product.imagens}
-                            />
-                            <View className="flex justify-between">
-                                <Text numberOfLines={2} className="text-white font-extrabold text-xl flex-wrap w-40 p-2">
-                                    {product.nome}</Text>
-                                <Text className="text-white ml-2">
-                                    {product.descricao}
-                                </Text>
-                                <Text className="text-white align-middle">
-                                <FontAwesome name="dollar" size={24} color="white" />{product.preco}
-                                </Text>
+                index < 2 && (
+                    <View key={index} className="flex bg-cyan-800 h-36 m-2 rounded-lg">
+                            <View className="flex flex-row">
+                                <Image
+                                className="w-36 h-36 rounded-l-lg"
+                                src={product.imagens}
+                                />
+                                <View className="flex justify-between">
+                                    <Text numberOfLines={2} className="text-white font-extrabold text-xl flex-wrap w-40 p-2">
+                                        {product.nome}</Text>
+                                    <Text className="text-white ml-2">
+                                        {product.descricao}
+                                    </Text>
+                                    <Text className="text-white align-middle">
+                                    <FontAwesome name="dollar" size={24} color="white" />{product.preco}
+                                    </Text>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                )}
+                        )
+            )}
         </View>
 
         </>
