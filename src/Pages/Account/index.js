@@ -5,11 +5,13 @@ import { useEffect } from "react";
 import { axiosApi } from "../../Services/http-client";
 import { useState } from "react";
 
-export default function Account({navigation}){
+export default function Account({route, navigation}){
     const {Token} = useSelector(useStateLogin)
     const {User} = useSelector(useStateLogin)
     const [Business, setBusiness] = useState();
     const [Loading, setLoading] = useState(true);
+    const {refresh} = route.params;
+
 
     useEffect(()=> {
         axiosApi.get(`business/getbyid?idEmpresa=${User.idEmpresa}`)
@@ -20,7 +22,7 @@ export default function Account({navigation}){
         .catch((err)=>{
             setLoading(false)
         })
-    },[])
+    },[refresh])
 
   
     return (

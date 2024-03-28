@@ -29,7 +29,7 @@ export function CompanyStackScreen() {
         }}
       />
       {AuthenticatedIs ? (
-        <Tab.Screen name="Account" component={Account} 
+        <Tab.Screen name="Account" component={Account} initialParams={{refresh: false}}
           options={{
             tabBarIcon: () => <MaterialIcons name="account-circle" size={24} color="black" />
           }}

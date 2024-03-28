@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Button, ScrollView, Text, TextInput, View } from "react-native";
 import { useSelector } from "react-redux";
 import { useStateLogin } from "../../Redux/LoginSlice";
 import * as ImagePicker from 'expo-image-picker';
@@ -65,7 +65,7 @@ export default function CreateProduct({navigation}){
     return (
         <View className="flex-1 justify-center items-center gap-y-2 bg-blue-950">
             <View className="justify-center">
-                    <Text className="font-bold text-4xl text-white text-center pb-14">Adicione seu produto</Text>
+                <Text className="font-bold text-4xl text-white text-center pb-14">Adicione seu produto</Text>
                 
                 <Text  className="font-bold text-x text-white text-center pb-3"> Digite o nome do produto</Text>
                 <Controller
