@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { useStateLogin } from "../../Redux/LoginSlice";
 import { axiosApi } from "../../Services/http-client";
 import {useForm, Controller} from 'react-hook-form';
+import axios from "axios";
 
 export default function AddBusiness({navigation}){
     const [Logo, setLogo] = useState();
@@ -14,6 +15,7 @@ export default function AddBusiness({navigation}){
     const [GeoData, setGeoData] = useState();
     const [CoordMark, setCoordMark] = useState();
     const {User} = useSelector(useStateLogin);
+    const GOOGLE_API_KEY = "AIzaSyCGfJLzUwsnXWl_kbscmEHqfYIPtfwklVQ"
     const formData = new FormData();
 
     const {
@@ -35,6 +37,10 @@ export default function AddBusiness({navigation}){
     })
     
     const onSubmit = (data) => {
+        console.log("foi", data)
+        navigation.navigate("BusinessLocation", {dadosBusiness: data, idUsuario: User.idUsuario, Category: Category, Logo: Logo})
+        
+        /*
         formData.append("IdUser", User.idUsuario)
         formData.append("Name", data.Name)
         formData.append('Description', data.Description)
@@ -59,8 +65,9 @@ export default function AddBusiness({navigation}){
                 'Content-Type': 'multipart/form-data'
               }
         }).then((res) => {
-            console.log(res)
+            navigation.navigate("Account", {refresh: true})
         }).catch((err)=> console.log(err))
+        */
     }
 
     const categories = ["Food", "Fashion", "Technology"]
@@ -83,24 +90,10 @@ export default function AddBusiness({navigation}){
             setLogo(result.assets[0])
         }
     }
-    
 
-    function AddBusiness(){
-        axiosApi({
-            method: "post",
-            url: "business/insert",
-            data: formData,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-        }).then((res) => {
-            console.log(res)
-            navigation.navigate("Account", {refresh: true})
-        }).catch((err)=> console.log(err))
-    }
     
-
     return (
+        
     <ScrollView>
         <View className="flex-1 justify-center items-center gap-y-2 bg-blue-950">
             <View className="justify-center">
@@ -292,20 +285,7 @@ export default function AddBusiness({navigation}){
                     {errors.Operation && <Text>{errors.Operation.message}</Text>}
 
                     <Text  className="font-bold text-x text-white text-center pb-3"> Selecione a localização da empresa</Text>
-                    <MapView
-                    style={styles.map}
-                    onPress={handleMapPress}
-                    region={"urbis 1"}
-                    initialRegion={{
-                        latitude: -12.672756378682344,
-                        longitude: -38.54205376995294,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                        }
-                    }
-                    >
-                        {CoordMark && <Marker coordinate={CoordMark} />}
-                    </MapView>
+                    
                     <Button 
                         title="Submit"
                         onPress={handleSubmit(onSubmit)}
@@ -313,6 +293,35 @@ export default function AddBusiness({navigation}){
             </View>
         </View>
     </ScrollView>
+
+/*
+<View style={{ flex: 1 }}>
+<GooglePlacesAutocomplete
+        placeholder="Digite um endereço"
+        onPress={handleAddressSelect}
+        query={{
+          key: GOOGLE_API_KEY,
+          language: 'pt-BR',
+        }}
+        fetchDetails
+        enablePoweredByContainer={false}
+        styles={{
+          textInputContainer: {
+            width: '100%',
+          },
+          textInput: {
+            height: 38,
+            color: '#5d5d5d',
+            fontSize: 16,
+          },
+          predefinedPlacesDescription: {
+            color: '#1faadb',
+          },
+        }}
+      />
+      
+</View>
+*/
     )
 }
 
