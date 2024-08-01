@@ -13,6 +13,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import CreateProduct from '../CreateProduct';
 import { Products } from '../Products';
 import { About } from '../About';
+import BusinessLocation from '../CreateBusinessLocation';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +54,7 @@ export default function MyStack() {
       <CompanyStack.Screen name="Principal" component={CompanyStackScreen} options={{ headerShown: false }}/>
       <CompanyStack.Screen name="Business" component={Business}/>
       <CompanyStack.Screen name="AddBusiness" component={AddBusiness} />
+      <CompanyStack.Screen name="BusinessLocation" component={BusinessLocation} />
       <CompanyStack.Screen name="AddUser" component={CreateUser} />
       <CompanyStack.Screen name="AddProduct" component={CreateProduct} />
       <CompanyStack.Screen name="Products" component={Products} />

@@ -58,7 +58,7 @@ export default function Home({navigation}) {
       )
     }
   }, [searchText])
-
+  
   return (
       <View className="flex-1 bg-white">
         <View className="relative h-32 p-4 bg-blue-950">
