@@ -1,57 +1,81 @@
-# Entendendo decisões arquiteturais e a estrutura do projeto
+# 🛍️ Promoções Candeias
 
-## Resumo do projeto
-- A principal ideia do projeto é criar uma aplicação pra resolver um "problema" da minha cidade, onde pequenas empresas/negocios enfrentão dificuldade em divulgar ou apresentar seus produtos.
+O **Promoções Candeias** é um aplicativo desenvolvido com o objetivo de **fortalecer o comércio local da cidade de Candeias**, permitindo que pequenos negócios divulguem suas promoções e produtos de forma simples e acessível.
 
-## Requisitos para rodar o projeto
+O foco principal é ajudar empresas a **ganhar visibilidade** e permitir que usuários encontrem com facilidade **promoções, localização e informações sobre os comércios**.
 
-### Setup de ambiente:
+---
 
-- [DOTNET](https://dotnet.microsoft.com/pt-br/)
-  - Instale o [`dotnet`](https://github.com/nvm-sh/nvm)
+## 🎯 Objetivo
 
-### Como rodar na minha máquina?
+- Conectar **empresas locais** e **clientes da cidade** em um só ambiente digital.
+- Divulgar **promoções semanais** de forma prática.
+- Permitir que os usuários **descubram novos negócios** e tenham acesso rápido às informações (endereço, nicho, produtos).
 
-- Clone o projeto `git clone https://github.com/RHamudi/project-promo-back.git`
-- Selecione a pasta /Promocoes.API/
-- Rode `dotnet run`
-- Pronto 🎉
+---
 
-### Estrutura do projeto
+## ⚙️ Funcionalidades
 
-Utilizei o padrão DDD (Domain-Driven Design) com CQRS (Command Query Responsibility Segregation) para desenvolver o projeto
+### 👤 Para Usuários
 
-- Optei por usar o DDD pois no inicio não decidi todas as funcionalidades do aplicativo, e ao decorrer do desenvolvimento pode ser preciso adicionar algumas features, e esse padrão facilita isso.
+- Visualização das promoções em destaque da semana.
+- Acesso ao **catálogo de produtos** das empresas cadastradas.
+- Informações detalhadas dos comércios:
+  - Nome da empresa
+  - Localização (endereço)
+  - Nicho de atuação
+  - Promoções ativas
 
-- Ja o CQRS eu resolvi utilizar pois o comando(Escrita) e a Query(leitura) na minha aplicação utiliza entidades diferentes, e isso poderia acabar adicionando uma complexidade a mais.
+> ⚠️ O sistema **não realiza compras online**. O objetivo é apenas informar e conectar clientes aos estabelecimentos.
 
-### Resumo da estrutura das pastas
+### 🏪 Para Empresas
 
-![Print da pasta Domain](./readme/domainprint.png)
-- No domain está localizado todas entidades, validações e regras de negocio da aplicação.
+- Cadastro de empresa e perfil comercial.
+- Criação de promoções para destacar ofertas da semana.
+- Divulgação de produtos e novidades do catálogo.
+- Maior visibilidade dentro da comunidade local.
 
-![Print da pasta infrastructure](./readme/infraprint.png)
-- Na infrastructure é responsavel pela conexão com o banco e tambem com as consultas de escrita e leitura.
-- Input responsavel por todas as querys de escrita;
-- Output responsavel por todas as querys de leitura;
-- Shared tem todos os metodos e classes que serão utilizadas em ambas as partes.
+---
 
-![Print da pasta application](./readme/appprint.png)
-- Responsavel por fazer a comunicação entre as informações que vem da requisição com a paste de infrastructure. 
+## 📊 Benefícios
 
-![Print da pasta application](./readme/apiprint.png)
-- Responvel por criar as rotas que o usuario terá acesso.
- 
-### obs
+- **Para clientes**: acesso fácil às promoções e informações sobre comércios locais.
+- **Para empresas**: oportunidade de divulgar seus produtos sem depender de grandes investimentos em marketing.
+- **Para a cidade**: fortalecimento da economia local e incentivo ao consumo dentro da comunidade.
 
-Essa não é a versão final da API, agora estou desenvolvendo a primeira versão do front end, nessa api ainda irei adicionar outras rotas e novas funcionalidades.
+---
 
-Atualmente essas são as rotas criadas:
-![Print da pasta application](./readme/print%20swagger%20api.png)
+## 🚀 Tecnologias Utilizadas
 
-### Novas funcionalidades que estão por vim
+- **Frontend Mobile**: React Native
+- **Backend**: .NET
+- **Banco de Dados**: (defina aqui, ex.: SQL Server / PostgreSQL / MongoDB)
 
-- Novas rotas para deletar empresa, product e promoção;
-- Promoção ser deletada automaticamente quando acabar o prazo proposto na criação;
-- Sistema de login com autenticação;
-- Melhorar o sistema de envio de imagens em todas as rotas.
+---
+
+## 📌 Status do Projeto
+
+✅ Projeto desenvolvido e funcional.  
+Atualmente voltado para a cidade de Candeias, podendo ser expandido futuramente para outras regiões.
+
+---
+
+## 💡 Possíveis Melhorias Futuras
+
+- Sistema de busca por nicho/categoria de empresa.
+- Filtro por promoções mais recentes ou mais populares.
+- Integração com mapas para facilitar a localização dos comércios.
+- Área de favoritos para o usuário salvar empresas/promos que gosta.
+
+---
+
+## 🧑‍💻 Autor
+
+Projeto desenvolvido por **Ramon Silva**, com o intuito de resolver um problema real da comunidade de **Candeias**.
+
+---
+
+## 📜 Licença
+
+Este projeto está sob a licença que você definir.  
+Sugestão: **MIT** (para open source) ou licença restrita caso queira manter uso apenas pessoal/comercial local.

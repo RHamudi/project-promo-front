@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const requestAPI = "https://674e-2804-88c-73ce-f600-9d7e-6293-e934-dc7c.ngrok-free.app/api/"
+const requestAPI = 'http://172.24.160.1:8080/api/';
 
 export const axiosApi = axios.create({
-    baseURL: requestAPI,
-  });
+  baseURL: requestAPI,
+});
 
 export const httpClient = (config) => {
-    return axiosInstance(config);
-  };
+  return axiosInstance(config);
+};
